@@ -1,0 +1,31 @@
+short = 10
+long = 20
+signal = 0
+selectedPrice = 1
+selectedTradeVol = 0
+selectedCircSupply = 0
+buyDirectionDecrease = 1 
+buyDirectionIncrease = 0 
+sellDirectionDecrease = 0 
+sellDirectionIncrease = 1  
+buyPersistenceThreshold = 3
+sellPersistenceThreshold = 2
+selectedAmt = 1
+selectedPer = 0
+selectedActionBuy = 1
+selectedActionSell = 0
+selectedThresholds = 0
+selectedPriceProtection = 0
+
+
+[thresholds]
+priceDecreaseAmt = 0.00001
+priceIncreaseAmt = 0.00002
+priceDecreasePer = 0.000001
+priceIncreasePer = 0.000001
+tradeVolDecreaseAmt = 0.00001
+tradeVolIncreaseAmt = 0.00002
+tradeVolDecreasePer = 0.000001
+tradeVolIncreasePer = 0.000001
+buyPriceThreshold = 5650
+sellPriceThreshold = 5660
