@@ -24,7 +24,7 @@
       BTC - Bitcoin
   <br>BCH - Bitcoin Cash
   <br>DASH - Dash
-  <br>ETC - Ethereum Classis 
+  <br>ETC - Ethereum Classic
   <br>ETH - Ethereum
   <br>LTC - Litecoin
   <br>NXT - NXT

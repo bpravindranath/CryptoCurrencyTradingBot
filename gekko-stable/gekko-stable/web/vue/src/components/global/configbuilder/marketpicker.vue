@@ -162,8 +162,8 @@ export default {
 }
 .exchange_Info{
   margin-top: 2em;
-    font-size: 0.7em;
-    color: #777;
+  font-size: 0.7em;
+  color: white;
 }
 
 

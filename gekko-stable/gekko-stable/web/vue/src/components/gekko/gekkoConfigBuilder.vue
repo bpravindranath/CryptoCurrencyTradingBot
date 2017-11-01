@@ -5,7 +5,7 @@
       h3.center2 Market
         .tooltip2
           img(src='/assets/Question.jpg', width='20', height='20')
-          span.tooltiptext2 A market is the platform where your crytocurrency will be traded.
+          span.tooltiptext2 A market is the platform where your cryptocurrency will be traded.
       hr
       market-picker.contain(v-on:market='updateMarketConfig', :only-tradable='isTradebot')
     .grd-row-col-3-6.mx1

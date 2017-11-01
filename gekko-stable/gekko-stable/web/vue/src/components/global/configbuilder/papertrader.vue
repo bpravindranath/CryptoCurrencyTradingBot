@@ -64,7 +64,7 @@ export default {
 .label-like {
   display: block;
   font-size: 0.9em;
-  color: #777;
+  color: white;
 }
 
 .align {

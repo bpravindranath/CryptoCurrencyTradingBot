@@ -12,7 +12,7 @@
         label(for='strat').exchange_align.wrapper Strategy:
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
         span 
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem") Here
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
         
         
         .custom-select.button
@@ -22,8 +22,8 @@
         label.exchange_align2(for='candleSize') Candle Size
         .tooltip2
           img(src='/assets/Question.jpg', width='10', height='10')
-          span.tooltiptext2 Candle Description
-            img(src='/assets/Candle.jpg')
+          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and Gekko will update its data on every interval.
+            
         .grd-row
           .grd-row-col-3-6
             input.Inputcolor(v-model='rawCandleSize')
@@ -34,7 +34,7 @@
                 option hours
                 option days
       div
-        label(for='historySize') Warmup period (in {{ rawCandleSize }} {{ singularCandleSizeUnit }} candles):
+        h5.font_bold(for='historySize') Warmup period (in {{ rawCandleSize }} {{ singularCandleSizeUnit }} candles):
         input.Inputcolor(v-model='historySize')
         em.label-like (will use {{ humanizeDuration(candleSize * historySize * 1000 * 60) }} of data as history)
     .grd-row-col-3-6.px1
@@ -200,10 +200,13 @@ export default {
   padding: 0.4em 1.2em .3em .8em;
 }
 
+.label_color{
+  color: white;
+}
 .label-like {
   display: block;
   font-size: 0.9em;
-  color: #777;
+  color: white;
 }
 .TextAreacolor{
   color:black
@@ -221,6 +224,9 @@ export default {
   padding-bottom: 2%;
 }
 
+.font_bold{
+  font-weight: 100;
+}
 
 .align {
   padding-left: 1em;
