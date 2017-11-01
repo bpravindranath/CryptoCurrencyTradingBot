@@ -1,8 +1,9 @@
 <template lang='jade'>
   div.contain.my2
-    h3 Start a new gekko
+    h3.center START A NEW GEKKO
+    hr
     gekko-config-builder(v-on:config='updateConfig')
-    .hr
+    hr
     .txt--center(v-if='config.valid')
       a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='start') Start
 </template>
@@ -189,4 +190,7 @@ export default {
 </script>
 
 <style>
+.center{
+  text-align: center;
+}
 </style>

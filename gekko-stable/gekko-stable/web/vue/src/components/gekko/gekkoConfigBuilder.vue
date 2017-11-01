@@ -2,14 +2,18 @@
 .grd.contain
   .grd-row
     .grd-row-col-3-6.mx1
-      h3 Market
+      h3.center2 Market
+        .tooltip2
+          img(src='/assets/Question.jpg', width='20', height='20')
+          span.tooltiptext2 A market is the platform where your crytocurrency will be traded.
+      hr
       market-picker.contain(v-on:market='updateMarketConfig', :only-tradable='isTradebot')
     .grd-row-col-3-6.mx1
       type-picker(v-on:type='updateType')
   template(v-if='type !== "market watcher"')
-    .hr
+    hr
     strat-picker.contain.my2(v-on:stratConfig='updateStrat')
-    .hr(v-if='type === "paper trader"')
+    hr(v-if='type === "paper trader"')
     paper-trader(v-on:settings='updatePaperTrader', v-if='type === "paper trader"')
 </template>
 
@@ -120,4 +124,51 @@ export default {
 </script>
 
 <style>
+.question2 {
+  padding-left: 1em;
+  padding-top: 2em;
+}
+
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    width: 250px;
+    font-size: 15px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 90%;
+    left: 50%;
+    margin-left: -125px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip2 .tooltiptext2::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+    opacity: 1;
+}
+.center2{
+  text-align: center;
+}
 </style>

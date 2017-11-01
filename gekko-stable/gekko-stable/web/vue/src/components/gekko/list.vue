@@ -1,8 +1,9 @@
 <template lang='jade'>
   .contain.py2
     .text(v-html='text')
-    .hr
+    hr
     h3 Market watchers
+   
     .text(v-if='!watchers.length')
       p You are currently not watching any markets.
     table.full.clickable(v-if='watchers.length')
@@ -26,6 +27,7 @@
           td
             template(v-if='gekko.firstCandle && gekko.lastCandle') {{ timespan(gekko.lastCandle.start, gekko.firstCandle.start) }}
     h3 Strat runners
+    
     .text(v-if='!stratrunners.length')
       p You are currently not running any strategies.
     table.full(v-if='stratrunners.length')
@@ -51,9 +53,9 @@
           td
             template(v-if='!gekko.report') 0
             template(v-if='gekko.report') {{ round(gekko.report.profit) }} {{ gekko.watch.currency }}
-    .hr
-    h2 Start a new live Gekko
-    router-link(to='/live-gekkos/new') start a new live Gekko!
+    hr
+    h2 Start A New Live Gekko
+    router-link.hello(to='/live-gekkos/new') Start!
 </template>
 
 <script>
@@ -112,6 +114,11 @@ export default {
 </script>
 
 <style>
+
+
+hr.style{
+  margin: 0% 50%;
+}
 table.clickable {
   border-collapse: separate;
 }

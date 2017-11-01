@@ -20,12 +20,18 @@
 </script>
 
 <style>
+
+body{
+  background-color: #212C38;
+  color: white;
+}
 .menu {
   display: flex;
   width: 100%;
   flex-direction: row;
   margin-top: 0;
   margin-bottom: 2rem;
+  color: black;
 }
 
 .menu a {

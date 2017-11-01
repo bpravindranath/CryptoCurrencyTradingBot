@@ -1,7 +1,7 @@
 <template lang='jade'>
 .grd
   .px1
-    h3 Paper trader
+    h3.center2 Paper trader
     em(v-if='toggle === "closed"')
       a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
     template(v-if='toggle === "open"')
@@ -69,5 +69,9 @@ export default {
 
 .align {
   padding-left: 1em;
+}
+
+.center6{
+  justify-content: center;
 }
 </style>
