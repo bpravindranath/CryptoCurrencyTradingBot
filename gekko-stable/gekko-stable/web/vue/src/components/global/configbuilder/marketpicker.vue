@@ -2,12 +2,13 @@
 div
   .mx1
     label.exchange_align(for='exchange').wrapper Exchange:
-    span.exchange_Info(for='exchangeInfo') {{exchangeInfo}}
-    span 
-      a.exchange_Info(v-bind:href="url",target="_blank", style="font-size: 0.9rem") Here
+ 
     .custom-select.button
       select(v-model='exchange')
         option(v-for='(market, e) in exchanges') {{ e }}
+    span.exchange_Info(for='exchangeInfo') {{exchangeInfo}}
+    span 
+      a.exchange_Info(v-bind:href="url",target="_blank", style="font-size: 0.9rem") Here
  
           
   .grd-row
