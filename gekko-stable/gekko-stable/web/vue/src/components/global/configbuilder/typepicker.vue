@@ -1,6 +1,6 @@
 <template lang='jade'>
 div
-  h3.center3.header_font How Do You Want To Run Gekko?
+  h3.center3 How Do You Want To Run Gekko?
     .tooltip2
           img(src='/assets/Question.jpg', width='20', height='20')
           span.tooltiptext2 Once you have a strategy you can use Gekko to automatically run it in a few different ways
@@ -71,7 +71,7 @@ export default {
 
 .radio_header{
   font-size: 1rem;
-text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .header_font{

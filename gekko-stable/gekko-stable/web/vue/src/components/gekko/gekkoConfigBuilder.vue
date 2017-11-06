@@ -13,7 +13,7 @@
       market-picker.contain(v-on:market='updateMarketConfig', :only-tradable='isTradebot')
     
   template(v-if='type !== "market watcher"')
-    hr
+    
     strat-picker.contain.my2(v-on:stratConfig='updateStrat')
     hr(v-if='type === "paper trader"')
     paper-trader(v-on:settings='updatePaperTrader', v-if='type === "paper trader"')
