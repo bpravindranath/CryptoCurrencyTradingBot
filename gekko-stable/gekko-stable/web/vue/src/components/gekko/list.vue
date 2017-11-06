@@ -1,6 +1,8 @@
 <template lang='jade'>
   .contain.py2
-    .text(v-html='text')
+    //- .text(v-html='text')
+    h2.col-4 Start A New Live Gekko
+    router-link.hello(to='/live-gekkos/new') Start!
     hr
     h3 Market watchers
    
@@ -54,8 +56,7 @@
             template(v-if='!gekko.report') 0
             template(v-if='gekko.report') {{ round(gekko.report.profit) }} {{ gekko.watch.currency }}
     hr
-    h2 Start A New Live Gekko
-    router-link.hello(to='/live-gekkos/new') Start!
+    
 </template>
 
 <script>
@@ -64,13 +65,13 @@ import marked from '../../tools/marked'
 // global moment
 // global humanizeDuration
 
-const text = marked(`
+// const text = marked(`
 
-## Live Gekko
+// ## Live Gekko
 
-Run your strategy against the live market!
+// Run your strategy against the live market!
 
-`);
+// `);
 
 export default {
   data: () => {
