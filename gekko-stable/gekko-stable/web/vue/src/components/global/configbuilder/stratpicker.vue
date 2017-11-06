@@ -10,14 +10,12 @@
       hr
       div
         label(for='strat').exchange_align.wrapper Strategy:
-        span.exchange_Info(for='strategyInfo') {{strategyInfo}}
-        span 
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
-        
-        
         .custom-select.button
           select(v-model='strategy')
             option(v-for='strat in strategies') {{ strat.name }}
+        span.exchange_Info(for='strategyInfo') {{strategyInfo}}
+        span 
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
       div
         label.exchange_align2(for='candleSize') Candle Size
         .tooltip2
