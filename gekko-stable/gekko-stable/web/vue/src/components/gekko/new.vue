@@ -1,6 +1,6 @@
 <template lang='jade'>
   div.contain.my2
-    h3.center START A NEW GEKKO
+    h3.center.header_new_gekko START A NEW GEKKO
     hr
     gekko-config-builder(v-on:config='updateConfig')
     hr
@@ -192,5 +192,10 @@ export default {
 <style>
 .center{
   text-align: center;
+}
+
+.header_new_gekko{
+  font-size: 2.5rem;
+  font-weight: 900;
 }
 </style>

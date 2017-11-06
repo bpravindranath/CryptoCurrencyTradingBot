@@ -1,7 +1,7 @@
 <template lang='jade'>
 .grd
   .grd-row
-    .grd-row-col-3-6.px1
+    .grd-row-col-6.px1
       .grd-row.center4
         h3 Strategy
           .tooltip
@@ -9,17 +9,15 @@
             span.tooltiptext A strategy is a combination of functions that get market data in the form of candles (OHCL, volume and the average weighted price).
       hr
       div
-        label(for='strat').exchange_align.wrapper Strategy:
-        span.exchange_Info(for='strategyInfo') {{strategyInfo}}
-        span 
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
-        
-        
+        label(for='strat').exchange_align.wrapper.strategy_header Strategy:
         .custom-select.button
           select(v-model='strategy')
             option(v-for='strat in strategies') {{ strat.name }}
+        span.exchange_Info(for='strategyInfo') {{strategyInfo}}
+        span 
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
       div
-        label.exchange_align2(for='candleSize') Candle Size
+        label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
           img(src='/assets/Question.jpg', width='10', height='10')
           span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and Gekko will update its data on every interval.
@@ -34,10 +32,11 @@
                 option hours
                 option days
       div
-        h5.font_bold(for='historySize') Warmup period (in {{ rawCandleSize }} {{ singularCandleSizeUnit }} candles):
+        h5.font_bold(for='historySize').strategy_header Warmup period (in {{ rawCandleSize }} {{ singularCandleSizeUnit }} candles):
         input.Inputcolor(v-model='historySize')
-        em.label-like (will use {{ humanizeDuration(candleSize * historySize * 1000 * 60) }} of data as history)
-    .grd-row-col-3-6.px1
+        em.label-like.strategy_header (will use {{ humanizeDuration(candleSize * historySize * 1000 * 60) }} of data as history)
+  .grid-row
+    .grd-row-col-6-6.px1
       .grid-row
          h3.center5 Parameters
           .tooltip
@@ -45,7 +44,7 @@
             span.tooltiptext Parameters are the stategy rules for each strategy you can customize according to need
       hr
       div
-        p {{ strategy }} Parameters:
+        p.strategy_header {{ strategy }} Parameters:
         textarea.TextAreacolor.params(v-model='rawStratParams')
         p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
     
@@ -278,6 +277,12 @@ export default {
 
 .exchange_align2{
   display: inline-block;
+}
+
+
+.strategy_header{
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 </style>

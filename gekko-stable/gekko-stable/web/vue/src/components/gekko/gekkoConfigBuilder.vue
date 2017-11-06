@@ -1,17 +1,19 @@
 <template lang='jade'>
 .grd.contain
   .grd-row
-    .grd-row-col-3-6.mx1
+    .grd-row-col-6.mx1.txt--center
+      type-picker(v-on:type='updateType')
+  .grid-row
+    .grd-row-col-6.mx1
       h3.center2 Market
         .tooltip2
           img(src='/assets/Question.jpg', width='20', height='20')
           span.tooltiptext2 A market is the platform where your cryptocurrency will be traded.
       hr
       market-picker.contain(v-on:market='updateMarketConfig', :only-tradable='isTradebot')
-    .grd-row-col-3-6.mx1
-      type-picker(v-on:type='updateType')
+    
   template(v-if='type !== "market watcher"')
-    hr
+    
     strat-picker.contain.my2(v-on:stratConfig='updateStrat')
     hr(v-if='type === "paper trader"')
     paper-trader(v-on:settings='updatePaperTrader', v-if='type === "paper trader"')
