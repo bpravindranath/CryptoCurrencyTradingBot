@@ -1,23 +1,24 @@
 <template lang='jade'>
 div
   .mx1
-    label.exchange_align(for='exchange').wrapper Exchange:
-    span.exchange_Info(for='exchangeInfo') {{exchangeInfo}}
-    span 
-      a.exchange_Info(v-bind:href="url",target="_blank", style="font-size: 0.9rem") Here
+    label.exchange_align(for='exchange').wrapper.strategy_header Exchange:
+ 
     .custom-select.button
       select(v-model='exchange')
         option(v-for='(market, e) in exchanges') {{ e }}
+    span.exchange_Info(for='exchangeInfo') {{exchangeInfo}}
+    span 
+      a.exchange_Info(v-bind:href="url",target="_blank", style="font-size: 0.9rem") Here
  
           
   .grd-row
     .grd-row-col-3-6.mx1
-      label(for='currency') Currency:
+      label.strategy_header(for='currency') Currency:
       .custom-select.button
         select(v-model='currency')
           option(v-for='cur in currencies') {{ cur }}
     .grd-row-col-3-6.mx1
-      label(for='asset') Asset:
+      label.strategy_header(for='asset') Asset:
       .custom-select.button
         select(v-model='asset')
           option(v-for='asst in assets') {{ asst }}
@@ -162,9 +163,14 @@ export default {
 }
 .exchange_Info{
   margin-top: 2em;
-  font-size: 0.7em;
-  color: white;
+ 
+  color: #F6672E;
+
+
+  font-size: 1rem;
+  text-transform: uppercase;
 }
+
 
 
 </style>
