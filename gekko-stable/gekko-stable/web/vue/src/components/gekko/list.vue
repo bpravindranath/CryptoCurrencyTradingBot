@@ -1,10 +1,13 @@
 <template lang='jade'>
   .contain.py2
     //- .text(v-html='text')
-    h2.col-4 Start A New Live Gekko
-    router-link.hello(to='/live-gekkos/new') Start!
+    h2.col-4.center Start A New Live Gekko
+    div.button_center
+       router-link.router-link(to='/live-gekkos/new') 
+           button.button_color Start!
     hr
-    h3 Market watchers
+    div.button_center
+       h3 Market watchers
    
     .text(v-if='!watchers.length')
       p You are currently not watching any markets.
@@ -116,7 +119,36 @@ export default {
 
 <style>
 
+.center_content{
+  justify-content: center;
+}
 
+
+.button_center{
+  text-align: center; 
+}
+.button_color{
+  background-color: #212C38;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.button_color:hover{
+  background-color:#e5e500;
+  color: black;
+}
+
+.router-link{
+  color: white;
+}
 hr.style{
   margin: 0% 50%;
 }
