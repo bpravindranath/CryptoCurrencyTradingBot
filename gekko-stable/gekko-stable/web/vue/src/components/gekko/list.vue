@@ -1,11 +1,16 @@
 <template lang='jade'>
   .contain.py2
-    .text(v-html='text')
+    //- .text(v-html='text')
+    h2.col-4.center Start A New Live Gekko
+    div.button_center
+       router-link.router-link(to='/live-gekkos/new') 
+           button.button_color Start!
     hr
-    h3 Market watchers
-   
-    .text(v-if='!watchers.length')
-      p You are currently not watching any markets.
+    div.button_center
+       h3 Market watchers
+    div.sub-header-text
+       .text(v-if='!watchers.length')
+          p You are currently not watching any markets.
     table.full.clickable(v-if='watchers.length')
       thead
         tr
@@ -26,10 +31,12 @@
             template(v-if='gekko.lastCandle') {{ fmt(gekko.lastCandle.start) }}
           td
             template(v-if='gekko.firstCandle && gekko.lastCandle') {{ timespan(gekko.lastCandle.start, gekko.firstCandle.start) }}
-    h3 Strat runners
-    
-    .text(v-if='!stratrunners.length')
-      p You are currently not running any strategies.
+    hr
+    div.button_center
+      h3 Strat runners
+    div.sub-header-text
+      .text(v-if='!stratrunners.length')
+        p You are currently not running any strategies.
     table.full(v-if='stratrunners.length')
       thead
         tr
@@ -54,8 +61,7 @@
             template(v-if='!gekko.report') 0
             template(v-if='gekko.report') {{ round(gekko.report.profit) }} {{ gekko.watch.currency }}
     hr
-    h2 Start A New Live Gekko
-    router-link.hello(to='/live-gekkos/new') Start!
+    
 </template>
 
 <script>
@@ -64,13 +70,13 @@ import marked from '../../tools/marked'
 // global moment
 // global humanizeDuration
 
-const text = marked(`
+// const text = marked(`
 
-## Live Gekko
+// ## Live Gekko
 
-Run your strategy against the live market!
+// Run your strategy against the live market!
 
-`);
+// `);
 
 export default {
   data: () => {
@@ -115,7 +121,40 @@ export default {
 
 <style>
 
+.center_content{
+  justify-content: center;
+}
 
+.sub-header-text{
+  margin-left: 33%;
+ 
+}
+
+.button_center{
+  text-align: center; 
+}
+.button_color{
+  background-color: #212C38;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.button_color:hover{
+  background-color:#e5e500;
+  color: black;
+}
+
+.router-link{
+  color: white;
+}
 hr.style{
   margin: 0% 50%;
 }
