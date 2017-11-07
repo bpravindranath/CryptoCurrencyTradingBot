@@ -8,9 +8,9 @@
     hr
     div.button_center
        h3 Market watchers
-   
-    .text(v-if='!watchers.length')
-      p You are currently not watching any markets.
+    div.sub-header-text
+       .text(v-if='!watchers.length')
+          p You are currently not watching any markets.
     table.full.clickable(v-if='watchers.length')
       thead
         tr
@@ -31,10 +31,12 @@
             template(v-if='gekko.lastCandle') {{ fmt(gekko.lastCandle.start) }}
           td
             template(v-if='gekko.firstCandle && gekko.lastCandle') {{ timespan(gekko.lastCandle.start, gekko.firstCandle.start) }}
-    h3 Strat runners
-    
-    .text(v-if='!stratrunners.length')
-      p You are currently not running any strategies.
+    hr
+    div.button_center
+      h3 Strat runners
+    div.sub-header-text
+      .text(v-if='!stratrunners.length')
+        p You are currently not running any strategies.
     table.full(v-if='stratrunners.length')
       thead
         tr
@@ -123,6 +125,10 @@ export default {
   justify-content: center;
 }
 
+.sub-header-text{
+  margin-left: 33%;
+ 
+}
 
 .button_center{
   text-align: center; 
