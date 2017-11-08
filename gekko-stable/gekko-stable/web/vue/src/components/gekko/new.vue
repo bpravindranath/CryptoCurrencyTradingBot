@@ -5,7 +5,8 @@
     gekko-config-builder(v-on:config='updateConfig')
     hr
     .txt--center(v-if='config.valid')
-      a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='start') Start
+      a(href='#', v-on:click.prevent='start') 
+          button.button_color Start!
 </template>
 
 <script>
