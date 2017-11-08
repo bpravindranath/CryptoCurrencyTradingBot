@@ -10,10 +10,9 @@ buyPricePersistenceThreshold = 3
 sellPricePersistenceThreshold = 2
 buyVolPersistenceThreshold = 3
 sellVolPersistenceThreshold = 2
-selectedThresholds = 0
 priceProtection = 'disabled'
-selectedActionBuy = 1
-selectedActionSell = 0
+nextActionBuy = 'yes'
+nextActionSell = 'no'
 
 
 [thresholds]
