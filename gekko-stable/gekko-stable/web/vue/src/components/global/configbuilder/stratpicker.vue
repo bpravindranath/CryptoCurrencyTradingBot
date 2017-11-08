@@ -76,18 +76,28 @@ export default {
     };
   },
   created: function () {
+
+
+    //form what i can understand this is a get request that references the strategies.js in the router folder
+    //I believe it is returning data for each .toml file
     get('strategies', (err, data) => {
+
+        //return message with data from get request
         this.strategies = data;
 
         _.each(this.strategies, function(s) {
           s.empty = s.params === '';
         });
 
+        //this gets the strategies from 'this.strategies'. it is useing the .find()
+        //first parameter 
         this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
 
        
-
+        //checks if strategies have any parameters or not
         this.emptyStrat = _.find(this.strategies, { name: this.strategy }).empty;
+
+
         this.emitConfig();
     });
   },
@@ -129,8 +139,13 @@ export default {
 
 
       strat = _.find(this.strategies, { name: strat });
+
+    //this might be the strategies we edit. he makes a copy that he creates the config with
       this.rawStratParams = strat.params;
+
+
       this.emptyStrat = strat.empty;
+
 
       this.emitConfig();
 
@@ -167,6 +182,7 @@ export default {
         }
       }
 
+
       if(this.emptyStrat)
         config[this.strategy] = {__empty: true}
       else
@@ -180,10 +196,13 @@ export default {
     humanizeDuration: (n) => window.humanizeDuration(n),
     emitConfig: function() {
       this.parseParams();
+
       this.$emit('stratConfig', this.config);
     },
     parseParams: function() {
       try {
+
+
         this.stratParams = toml.parse(this.rawStratParams);
         this.rawStratParamsError = false;
       } catch(e) {
