@@ -1,21 +1,19 @@
-short = 10
-long = 20
-signal = 0
-selectedPrice = 1
-selectedTradeVol = 0
-selectedCircSupply = 0
-buyDirectionDecrease = 1 
-buyDirectionIncrease = 0 
-sellDirectionDecrease = 0 
-sellDirectionIncrease = 1  
-buyPersistenceThreshold = 3
-sellPersistenceThreshold = 2
-selectedAmt = 1
-selectedPer = 0
+buyImmediately = 'no'
+tradeFactors = 'price'
+priceType = 'open/close'
+buyIfPrice = 'decrease'
+sellIfPrice = 'increase'
+buyIfVol = 'decrease'
+sellIfVol = 'increase'
+changeType = '#'
+buyPricePersistenceThreshold = 3
+sellPricePersistenceThreshold = 2
+buyVolPersistenceThreshold = 3
+sellVolPersistenceThreshold = 2
+selectedThresholds = 0
+priceProtection = 'disabled'
 selectedActionBuy = 1
 selectedActionSell = 0
-selectedThresholds = 0
-selectedPriceProtection = 0
 
 
 [thresholds]
