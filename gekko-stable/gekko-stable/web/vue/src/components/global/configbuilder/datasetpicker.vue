@@ -1,11 +1,11 @@
 <template lang='jade'>
 div
-  h3 Select a dataset
+  h3.center Select a dataset
   .txt--center.my2(v-if='datasetScanstate === "idle"')
     a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') scan available data
   .txt--center.my2(v-if='datasetScanstate === "scanning"')
     spinner
-  .my2(v-if='datasetScanstate === "scanned"')
+  .my2.center(v-if='datasetScanstate === "scanned"')
 
     div(v-if='datasets.length != 0')
       table.full
