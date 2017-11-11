@@ -4,7 +4,7 @@ module.exports = (mode, config, callback) => {
   var child = fork(__dirname + '/child');
 
   // How we should handle client messages depends
-  // on the mode of the Pipeline that is being ran.
+  // on the mode of the Pipeline that is being run.
   var handle = require('./messageHandlers/' + mode + 'Handler')(callback);
 
   var message = {

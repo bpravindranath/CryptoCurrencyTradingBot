@@ -43,7 +43,9 @@
               .grd-row-col-3-6
                 strong {{ stratName }}
             | Parameters
-            pre {{ stratParams }}
+            <a href='#' style="font-size:12px" v-on:click="showHide">Show/Hide</a>
+            #parameterDiv
+             pre {{ stratParams }}
           .grd-row-col-3-6
             h3 Profit report
             template(v-if='!report')
@@ -79,17 +81,14 @@
 </template>
 
 <script>
-
 import Vue from 'vue'
 import _ from 'lodash'
-
 import { post } from '../../tools/ajax'
 import spinner from '../global/blockSpinner.vue'
 import chart from '../backtester/result/chartWrapper.vue'
 import roundtrips from '../backtester/result/roundtripTable.vue'
 import paperTradeSummary from '../global/paperTradeSummary.vue'
 // global moment
-
 export default {
   created: function() {
     if(!this.isLoading)
@@ -123,13 +122,11 @@ export default {
     trades: function() {
       if(!this.data)
         return [];
-
       return this.data.trades;
     },
     report: function() {
       if(!this.data)
         return;
-
       return this.data.report;
     },
     stratName: function() {
@@ -139,13 +136,10 @@ export default {
     stratParams: function() {
       if(!this.data)
         return '';
-
       let stratParams = Vue.util.extend({}, this.data.strat.params);
       delete stratParams.__empty;
-
       if(_.isEmpty(stratParams))
         return 'No parameters'
-
       return JSON.stringify(stratParams, null, 4);
     },
     isLoading: function() {
@@ -155,7 +149,6 @@ export default {
         return true;
       if(!_.isObject(this.data.lastCandle))
         return true;
-
       return false;
     },
     watchers: function() {
@@ -173,7 +166,6 @@ export default {
     data: function(val, prev) {
       if(this.isLoading)
         return;
-
       if(this.candleFetch !== 'fetched' )
         this.getCandles();
     }
@@ -185,11 +177,9 @@ export default {
     fmt: mom => moment.utc(mom).format('YYYY-MM-DD HH:mm'),
     getCandles: function() {
       this.candleFetch = 'fetching';
-
       let to = this.data.lastCandle.start;
       let from = this.data.firstCandle.start;
       let candleSize = this.data.strat.tradingAdvisor.candleSize;
-
       let config = {
           watch: this.data.watch,
           daterange: {
@@ -198,28 +188,36 @@ export default {
           // hourly candles
           candleSize
         };
-
       post('getCandles', config, (err, res) => {
         this.candleFetch = 'fetched';
         // todo
         if(!res || res.error || !_.isArray(res))
           console.log(res);
-
         this.candles = res.map(c => {
           c.start = moment.unix(c.start).utc().format();
           return c;
         });
       })
+    },
+  
+  showHide: function(){
+    var x = document.getElementById("parameterDiv");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
     }
-  }
 
+    
+  }
+  }
 }
 
 </script>
 
 <style>
-  .reduced-margin{
+
+.reduced-margin{
     margin-left: -30%;
-  }
-  
+}
 </style>
