@@ -15,7 +15,7 @@
   The author of this project is NOT responsible for any damage or loss caused 
   by this software. There can be bugs and the bot may not perform as expected 
   or specified. Please consider testing it first with paper trading and/or 
-  backtesting on historical data. Also look at the code to see what how 
+  backtesting on historical data. Also look at the code to see how 
   it is working.
 
 */
