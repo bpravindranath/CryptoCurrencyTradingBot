@@ -1,4 +1,5 @@
 <template lang='jade'>
+ .reduced-margin
   div.my2
     .contain(v-if='!data')
       h1 Unknown Strat runner
@@ -211,8 +212,14 @@ export default {
       })
     }
   }
+
 }
+
 </script>
 
 <style>
+  .reduced-margin{
+    margin-left: -30%;
+  }
+  
 </style>

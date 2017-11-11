@@ -54,6 +54,7 @@ export default {
 
 #chartWrapper.clickable {
   position: relative;
+  margin-right: 60px;
 }
 
 #chartWrapper.clickable .shield {
