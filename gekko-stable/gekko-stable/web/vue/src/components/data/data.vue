@@ -4,7 +4,7 @@
     .hr
     h2 Available datasets
     .txt--center.my2(v-if='datasetScanstate === "idle"')
-      a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') scan available data
+      a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
     .txt--center.my2(v-if='datasetScanstate === "scanning"')
       spinner
     .my2(v-if='datasetScanstate === "scanned"')

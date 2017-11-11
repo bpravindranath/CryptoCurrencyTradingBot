@@ -17,8 +17,6 @@ export default {
 <template lang='jade'>
   #app
     top
-    .fill
-      router-view.view
     bottom
     modal
 </template>
@@ -33,10 +31,11 @@ export default {
 
 .fill {
   flex: 1;
+  padding-left: 20%;
 }
 
 .text {
-  max-width: 500px;
+  max-width: 400px;
 }
 
 input {
@@ -54,5 +53,9 @@ input {
   margin-bottom: 2rem;
   height: 10px;
   background-color: rgba(250,250,250,.99);
+}
+
+a{
+    color: #e2e504
 }
 </style>
