@@ -6,7 +6,7 @@
           em Use Gekko and GekkoTU at your own risk.
         p Using Gekko v{{ version.gekko }} and Gekko UI v{{ version.ui }}.
       .footerR.px2.grd-row-col
-        a(href='#/backtest/glossary') Glossary
+        a(href='#/glossary/glossary') Glossary
      
 </template>
 
@@ -32,7 +32,7 @@ export default {
   display: block;
   text-align: center;
   text-decoration: none;
-  color: #fff;
+  color: #e2e504;
   }
 
   .footerR a:hover {

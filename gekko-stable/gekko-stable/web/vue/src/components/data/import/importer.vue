@@ -64,7 +64,7 @@ export default {
       let daysApart = this.daysApart(this.config.importer.daterange);
 
       if(daysApart < 1)
-        return alert('You can only import at least one day of data..')
+        return alert('You must import at least one day of data..')
 
       post('import', this.config, (error, response) => {
         if(error)

@@ -2,7 +2,7 @@
 div
   h3.center Select a dataset
   .txt--center.my2(v-if='datasetScanstate === "idle"')
-    a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') scan available data
+    a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
   .txt--center.my2(v-if='datasetScanstate === "scanning"')
     spinner
   .my2.center(v-if='datasetScanstate === "scanned"')
@@ -45,8 +45,8 @@ div
           label(for='customTo') To:
           input(v-model='customTo')
 
-    em(v-else) No Data found 
-      a(href='#/data/importer') Lets add some
+    em(v-else) No Data Found. 
+      a(href='#/data/importer') Let's Add Some.
 
 </template>
 
