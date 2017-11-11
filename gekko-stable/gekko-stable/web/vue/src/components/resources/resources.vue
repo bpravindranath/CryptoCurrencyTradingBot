@@ -11,8 +11,8 @@
   ### Resources
 
   #### Looking for more information? Start here.
-
-  ##### About Gekko & Gekko TU
+  <hr>
+  <p style='font-size: 20px;font-weight: bold;'>About Gekko & Gekko TU</p>
     <p style ='color:#e2e504; font-style:italic;'> What's the difference between Gekko and Gekko TU?</p>
     <p style='color: #ffffff'> Gekko TU is an extension of the original Gekko project. Gekko TU's goals are to provide a more user-friendly interface and the ability to configure custom trade strategies from the web interface. Perfect for new traders. Get more details at the links below.</p>
 
@@ -21,7 +21,7 @@
      <li><a href='https://github.com/askmike/gekko'>Gekko on GitHub.</a></li>
     </ul>
   
-  ##### About Cryptocurrencies & Trading
+  <p style='font-size: 20px;font-weight: bold;'>About Cryptocurrencies & Trading</p>
     <p style ='color:#e2e504; font-style:italic;'> I'm new to cryptocurrency trading. How can I get started?</p>
     <p style='color: #ffffff'>New traders may benefit from reviewing information from these sources:</p>
     <ul>
