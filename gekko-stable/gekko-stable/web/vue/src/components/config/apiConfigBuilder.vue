@@ -1,12 +1,13 @@
 <template lang='jade'>
-.grd.contain
+.grd-row
   h3 Add an API key
   p Make sure that the API key has the permissions to create and cancel orders and view balances.
   .grd-row
-    .grd-row-col-3-6.mx1
+    .grd-row-col-6.mx1
       h3 Exchange
       exchange-picker.contain(v-on:exchange='updateExchange', only-tradable='true')
-    .grd-row-col-3-6.mx1
+  .grid-row
+    .grd-row-col-5-6.mx1
       h3 Credentials
       template(v-for='cred in requires')
         label {{ cred }}
@@ -29,7 +30,8 @@ export default {
     }
   },
   components: {
-    exchangePicker
+    exchangePicker,
+    
   },
   computed: {
     apiKeySets: function() {
@@ -93,4 +95,8 @@ export default {
 </script>
 
 <style>
+
+.center_config{
+  justify-content: center;
+}
 </style>

@@ -1,4 +1,5 @@
 <template lang='jade'>
+
 .grd
   .grd-row
     .grd-row-col-6.px1
@@ -303,5 +304,10 @@ export default {
   font-size: 1rem;
   text-transform: uppercase;
 }
+
+
+.reduced-margin{
+    margin-left: -30%;
+  }
 
 </style>

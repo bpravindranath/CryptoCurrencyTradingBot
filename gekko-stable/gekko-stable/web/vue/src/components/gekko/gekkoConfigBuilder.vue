@@ -7,15 +7,26 @@
   .grid-row
     .grd-row-col-6.mx1  
       template(v-if='type === "tradebot"')
+       
         h3.center2 API Config Setup
           .tooltip2
             img(src='/assets/Question.jpg', width='20', height='20')
             span.tooltiptext2 An application programming interface key (API key) is a code passed in by Gekko calling an API of a specific trading exchange to identify the user. This will allow the user to make real trades on this exhange.
         hr
         div.center2
-          router-link(to='/config').py1 API Key Config Settings 
-          
-    
+          //- router-link(to='/config').py1 API Key Config Settings 
+          h4 Available API keys
+          p(v-if='!apiKeySets.length')
+            em You don't have any registered API keys.
+          ul
+            li(v-for='exchange in apiKeySets') {{ exchange }} (
+              a(href='#', v-on:click.prevent='removeApiKey(exchange)') remove
+              | )
+          a(href='#', v-if='!addApiToggle', v-on:click.prevent='openAddApi') Add API key
+          template(v-if='addApiToggle')
+            hr
+            apiConfigBuilder
+          hr
       
   .grid-row
     .grd-row-col-6.mx1
@@ -36,11 +47,19 @@
 
 <script>
 
+
 import marketPicker from "../global/configbuilder/marketpicker.vue";
 import typePicker from "../global/configbuilder/typepicker.vue";
 import stratPicker from "../global/configbuilder/stratpicker.vue";
 import paperTrader from "../global/configbuilder/papertrader.vue";
 import { get } from "../../tools/ajax";
+
+import config from '../config/config.vue';
+import apiConfigBuilder from '../config/apiConfigBuilder.vue';
+import { post } from '../../tools/ajax';
+
+
+
 import _ from "lodash";
 
 export default {
@@ -61,14 +80,18 @@ export default {
       strat: {},
       paperTrader: {},
       candleWriter: {},
-      performanceAnalyzer: {}
+      performanceAnalyzer: {},
+      addApiToggle: false
     };
   },
   components: {
+    apiConfigBuilder,
     marketPicker,
     typePicker,
     stratPicker,
     paperTrader
+    
+
   },
   computed: {
     isTradebot: function() {
@@ -94,7 +117,14 @@ export default {
       config.valid = this.validConfig(config);
 
       return config;
+    },
+
+    //config computed
+     apiKeySets: function() {
+      return this.$store.state.apiKeys
     }
+
+
   },
   methods: {
     validConfig: config => {
@@ -129,9 +159,28 @@ export default {
 
     emitConfig: function() {
       this.$emit("config", this.config);
+    },
+
+    //config methods
+    openAddApi: function() {
+      this.addApiToggle = true;
+    },
+    removeApiKey: function(exchange) {
+      if(!confirm('Are you sure you want to delete these API keys?'))
+        return;
+
+      post('removeApiKey', {exchange}, (error, response) => {
+        if(error)
+          return alert(error);
+      });
+    }
+  },
+  watch: {
+     apiKeySets: function() {
+      this.addApiToggle = false;
     }
   }
-};
+}
 </script>
 
 <style>
