@@ -95,7 +95,8 @@ server.listen(config.api.port, config.api.host, '::', () => {
   let nodeCommand = _.last(process.argv[1].split('/'));
   if(nodeCommand === 'gekko' && !config.headless) {
     try {
-      opn(location);
+      // opn(location);
+      opn('http://localhost:3000/#/live-gekkos');
     } catch(e) {}
   }
 });
