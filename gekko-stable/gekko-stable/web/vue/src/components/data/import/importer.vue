@@ -1,6 +1,8 @@
 <template lang='jade'>
-  div.contain.my2
-    div.text(v-html='intro')
+  div.center.contain.my2
+    div.center
+       h3 Import data
+       p The importer can download historical market data directly from the exchange.
     .hr
     h3 Currently running imports
     p(v-if='imports.length === 0') You currently don't have any imports running.

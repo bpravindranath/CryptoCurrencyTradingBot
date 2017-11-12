@@ -6,15 +6,15 @@
         <router-link to='/home'><img src='/assets/Gekko_TUHeader.jpg'></router-link>
         
     .flex-container2
-      .flex-container3
+      .flex-container3.twitter-height
           .menu
              router-link(to='/live-gekkos').py1 Trade Bots <br>& Market Watchers
              router-link(to='/backtest').py1 Backtests
-             <a href='#/resources/resources' style='padding-top: 12px;'> Resources</a>
-             .sidebar-item
-              p Bitcoin News on Twitter
+             a(href='#/resources/resources' style='padding-top: 12px;') Resources
+               .sidebar-item
+                 p Bitcoin News on Twitter
                 
-           a.twitter-timeline(href='https://twitter.com/hashtag/bitcoin', data-widget-id='924709618386919427' height='500') #bitcoin Tweets
+              a.twitter-timeline(href='https://twitter.com/hashtag/bitcoin', data-widget-id='924709618386919427', height='500') #bitcoin Tweets
       .flex-container4
         .fill
             router-view.view
@@ -28,10 +28,20 @@
 
 <style>
 
+
+
+
+
+
+.twitter-height{
+  height: 100%;
+}
+
 .flex-container{
     display: flex;
     flex-flow: row wrap;
     width: 100%;
+
 }
 .header{
     background-color: #000000;
@@ -42,12 +52,14 @@
     flex-direction: row;
     flex-flow: nowrap;
     width: 100%;
+    
 }
 
 .flex-container3{
     align-self: flex-start;
     margin-right: 30px;
     width: 20%;
+    
 }
 
 .flex-container4{
@@ -97,7 +109,7 @@
 .menu a:hover {
   font-style: italic;
   font-weight: bold;
-  font-size: 20px;
+  background-color: #e2e504;
 }
 
 body{

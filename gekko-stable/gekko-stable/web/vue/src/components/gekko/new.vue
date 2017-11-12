@@ -1,4 +1,5 @@
 <template lang='jade'>
+.reduced-margin
   div.contain.my2
     h3.center.header_new_gekko START A NEW GEKKO
     hr

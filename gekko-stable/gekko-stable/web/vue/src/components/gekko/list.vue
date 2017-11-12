@@ -1,4 +1,5 @@
 <template lang='jade'>
+.reduced-margin
   .contain.py2
     //- .text(v-html='text')
     h2.col-4.center Start A New Live Gekko
@@ -126,7 +127,7 @@ export default {
 }
 
 .sub-header-text{
-  margin-left: 33%;
+text-align: center;
  
 }
 
