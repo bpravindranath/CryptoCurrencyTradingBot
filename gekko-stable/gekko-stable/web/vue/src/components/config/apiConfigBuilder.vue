@@ -1,21 +1,20 @@
 <template lang='jade'>
-.grd-row
-  h3 Add an API key
-  p Make sure that the API key has the permissions to create and cancel orders and view balances.
-  .grd-row
-    .grd-row-col-6.mx1
-      h3 Exchange
-      exchange-picker.contain(v-on:exchange='updateExchange', only-tradable='true')
-  .grid-row
-    .grd-row-col-5-6.mx1
-      h3 Credentials
-      template(v-for='cred in requires')
-        label {{ cred }}
-        input(v-model='credentials[cred]')
-  .txt--center
+//- .grd
+//-   h3 Add an API key
+//-   p Make sure that the API key has the permissions to create and cancel orders and view balances.
+.grd
+  .grd-row-col-6.mx1
+    h3 Exchange
+    exchange-picker.contain(v-on:exchange='updateExchange', only-tradable='true')
+
+  .grd-row-col-6.mx1
+    h3 Credentials
+    template(v-for='cred in requires')
+      label {{ cred }}
+      input(v-model='credentials[cred]')
+  span.txt--center
     a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='upload') Add
 </template>
-
 <script>
 
 import exchangePicker from '../global/configbuilder/exchangepicker.vue'
@@ -89,7 +88,10 @@ export default {
 
         this.credentials = {};
       });
-    }
+    },
+    closeAddApi: function() {
+      this.addApiToggle = true;
+    },
   }
 }
 </script>

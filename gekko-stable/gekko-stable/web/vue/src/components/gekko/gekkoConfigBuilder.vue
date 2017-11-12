@@ -4,7 +4,7 @@
     .grd-row-col-6.mx1.txt--center
       type-picker(v-on:type='updateType')
     
-  .grid-row
+  .grd-row
     .grd-row-col-6.mx1  
       template(v-if='type === "tradebot"')
        
@@ -14,6 +14,7 @@
             span.tooltiptext2 An application programming interface key (API key) is a code passed in by Gekko calling an API of a specific trading exchange to identify the user. This will allow the user to make real trades on this exhange.
         hr
         div.center2
+
           //- router-link(to='/config').py1 API Key Config Settings 
           h4 Available API keys
           p(v-if='!apiKeySets.length')
@@ -27,6 +28,11 @@
             hr
             apiConfigBuilder
           hr
+         
+          
+
+   
+
       
   .grid-row
     .grd-row-col-6.mx1
