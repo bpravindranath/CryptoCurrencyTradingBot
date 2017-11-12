@@ -20,7 +20,7 @@
           p(v-if='!apiKeySets.length')
             em You don't have any registered API keys.
           ul
-            li(v-for='exchange in apiKeySets') {{ exchange }} (
+            li.no_bullets(v-for='exchange in apiKeySets') {{ exchange }} (
               a(href='#', v-on:click.prevent='removeApiKey(exchange)') remove
               | )
           a(href='#', v-if='!addApiToggle', v-on:click.prevent='openAddApi') Add API key
@@ -29,11 +29,6 @@
             apiConfigBuilder
           hr
          
-          
-
-   
-
-      
   .grid-row
     .grd-row-col-6.mx1
       h3.center2 Market
@@ -193,6 +188,10 @@ export default {
 .question2 {
   padding-left: 1em;
   padding-top: 2em;
+}
+
+.no_bullets{
+  list-style-type: none;
 }
 
 .tooltip2 {
