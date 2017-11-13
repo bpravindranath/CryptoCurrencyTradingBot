@@ -10,7 +10,7 @@
        
         h3.center2 API Config Setup
           .tooltip2
-            img(src='/assets/Question.jpg', width='20', height='20')
+            img(src='/assets/question_yellow.jpeg', width='20', height='20')
             span.tooltiptext2 An application programming interface key (API key) is a code passed in by Gekko calling an API of a specific trading exchange to identify the user. This will allow the user to make real trades on this exhange.
         hr
         div.center2
@@ -33,7 +33,7 @@
     .grd-row-col-6.mx1
       h3.center2 Market
         .tooltip2
-          img(src='/assets/Question.jpg', width='20', height='20')
+          img(src='/assets/question_yellow.jpeg', width='20', height='20')
           span.tooltiptext2 A market is the platform where your cryptocurrency will be traded.
       hr
       market-picker.contain(v-on:market='updateMarketConfig', :only-tradable='isTradebot')

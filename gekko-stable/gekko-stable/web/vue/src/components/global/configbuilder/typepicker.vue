@@ -2,7 +2,7 @@
 div
   h3.center3 How Do You Want To Run Gekko TU?
     .tooltip2
-          img(src='/assets/Question.jpg', width='20', height='20')
+          img(src='/assets/question_yellow.jpeg', width='20', height='20')
           span.tooltiptext2 You can use Gekko TU to simulate the results of a particular trading strategy with the paper trader, monitor markets with the market watcher, or make actual trades with the trade bot. 
   hr
   template
@@ -11,7 +11,7 @@ div
       div.grd-row-col-3-6(v-for='(type, i) in types').m1
         label.radio_header(:for='i') {{ type }}
           .tooltip2
-            img(src='/assets/Question.jpg', width='10', height='10')
+            img(src='/assets/question_yellow.jpeg', width='10', height='10')
             span.tooltiptext2(v-if="type === 'paper trader'"){{paperData}}
             span.tooltiptext2(v-if="type === 'market watcher'") {{marketData}}
             span.tooltiptext2(v-if="type === 'tradebot'") {{botData}}

@@ -6,7 +6,7 @@
       .grd-row.center4
         h3 Strategy
           .tooltip
-            img(src='/assets/Question.jpg', width='20', height='20')
+            img(src='/assets/question_yellow.jpeg', width='20', height='20')
             span.tooltiptext A strategy is a combination of functions that gets market data in the form of candles (OHLC, volume and the average weighted price, etc.) and makes buy and sell decisions based on parameter settings.
       hr
       div
@@ -20,7 +20,7 @@
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
-          img(src='/assets/Question.jpg', width='10', height='10')
+          img(src='/assets/question_yellow.jpeg', width='10', height='10')
           span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. Gekko will update its data on every interval.
             
         .grd-row
@@ -41,7 +41,7 @@
       .grid-row
          h3.center5 Parameters
           .tooltip
-            img(src='/assets/Question.jpg', width='20', height='20')
+            img(src='/assets/question_yellow.jpeg', width='20', height='20')
             span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
       hr
       div
