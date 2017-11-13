@@ -1,7 +1,7 @@
 <template lang='jade'>
 .reduced-margin
   div.contain.my2
-    h3.center.header_new_gekko START A NEW GEKKO
+    h3.center.header_new_gekko Start A New Trade Bot
     hr
     gekko-config-builder(v-on:config='updateConfig')
     hr

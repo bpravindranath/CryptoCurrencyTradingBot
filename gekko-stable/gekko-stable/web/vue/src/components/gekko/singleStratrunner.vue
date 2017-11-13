@@ -2,10 +2,10 @@
  .reduced-margin
   div.my2
     .contain(v-if='!data')
-      h1 Unknown Strat runner
-      p Gekko doesn't know what strat runner this is...
+      h1 Unknown Trade Bot
+      p Gekko doesn't know what trade bot this is...
     div(v-if='data')
-      h2.contain Strat runner
+      h2.contain Trade Bot
       .grd.contain
         .grd-row
           .grd-row-col-3-6
@@ -24,16 +24,16 @@
             spinner(v-if='isLoading')
             template(v-if='!isLoading')
               .grd-row(v-if='data.firstCandle')
-                .grd-row-col-2-6 Watching since
+                .grd-row-col-3-6 Watching Since
                 .grd-row-col-4-6 {{ fmt(data.firstCandle.start) }}
               .grd-row(v-if='data.lastCandle')
-                .grd-row-col-2-6 Received data until
+                .grd-row-col-3-6 Last Data Update
                 .grd-row-col-4-6 {{ fmt(data.lastCandle.start) }}
               .grd-row(v-if='data.lastCandle && data.firstCandle')
-                .grd-row-col-2-6 Data spanning
+                .grd-row-col-3-6 Data Spanning
                 .grd-row-col-4-6 {{ humanizeDuration(moment(data.lastCandle.start).diff(moment(data.firstCandle.start))) }}
               .grd-row(v-if='data.lastCandle && data.firstCandle')
-                .grd-row-col-2-6 Amount of trades
+                .grd-row-col-3-6 Number of Trades
                 .grd-row-col-4-6 {{ data.trades.length }}
         .grd-row
           .grd-row-col-3-6
@@ -47,16 +47,16 @@
             #parameterDiv
              pre {{ stratParams }}
           .grd-row-col-3-6
-            h3 Profit report
+            h3 Profit Report
             template(v-if='!report')
               p
                 em Waiting for at least one trade..
             template(v-if='report') 
               .grd-row
-                .grd-row-col-3-6 Start balance
+                .grd-row-col-3-6 Start Balance
                 .grd-row-col-3-6 {{ round(report.startBalance) }}
               .grd-row
-                .grd-row-col-3-6 Current balance
+                .grd-row-col-3-6 Current Balance
                 .grd-row-col-3-6 {{ round(report.balance) }}
               .grd-row
                 .grd-row-col-3-6 Market
@@ -68,11 +68,11 @@
                 .grd-row-col-3-6 Alpha
                 .grd-row-col-3-6 {{ round(report.alpha) }} {{ data.watch.currency }}
         p(v-if='watcher')
-          em This strat runner gets data from 
+          em This trade bot gets data from 
             router-link(:to='"/live-gekkos/watcher/" + watcher.id') this market watcher
           | .
       template(v-if='!isLoading')
-        h3.contain Market graph
+        h3.contain Market Graph
         spinner(v-if='candleFetch === "fetching"')
         template(v-if='candleFetch === "fetched"')
           chart(:data='chartData', :height='300')
