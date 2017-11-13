@@ -1,9 +1,9 @@
 <template lang='jade'>
 div
-  h3.center3 How Do You Want To Run Gekko?
+  h3.center3 How Do You Want To Run Gekko TU?
     .tooltip2
           img(src='/assets/Question.jpg', width='20', height='20')
-          span.tooltiptext2 Once you have a strategy you can use Gekko to automatically run it in a few different ways
+          span.tooltiptext2 You can use Gekko TU to simulate the results of a particular trading strategy with the paper trader, monitor markets with the market watcher, or make actual trades with the trade bot. 
   hr
   template
     label(for='type').wrapper
@@ -30,9 +30,9 @@ export default {
     return {
       types: ['paper trader', 'market watcher', 'tradebot'],
       selectedTypeIndex: 0,
-      paperData: 'You can run the strategy in realtime simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been.',
-      marketData: 'You can currently watch the market to help inform your trading decisions',
-      botData: 'You can run the strategy in realtime and automatically execute orders based on the signals.',
+      paperData: 'You can use the paper trader to simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been.',
+      marketData: 'You can use the market watcher to monitor the market to help inform your trading decisions',
+      botData: 'You can run a trade bot in realtime to automatically execute orders based on the parameters of your strategy. This performs actual trades with money from your connected accounts.',
     }
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
     type: function() {
        
        if(this.selectedTypeIndex === 'paper trader'){
-         this.paperData= " You can run the strategy in realtime simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been."
+         this.paperData= " You can use the paper trader to simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been."
          this.marketData = ""
          this.tradeData = ""
        } 

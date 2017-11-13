@@ -7,7 +7,7 @@
         h3 Strategy
           .tooltip
             img(src='/assets/Question.jpg', width='20', height='20')
-            span.tooltiptext A strategy is a combination of functions that get market data in the form of candles (OHCL, volume and the average weighted price).
+            span.tooltiptext A strategy is a combination of functions that gets market data in the form of candles (OHLC, volume and the average weighted price, etc.) and makes buy and sell decisions based on parameter settings.
       hr
       div
         label(for='strat').exchange_align.wrapper.strategy_header Strategy:
@@ -21,7 +21,7 @@
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
           img(src='/assets/Question.jpg', width='10', height='10')
-          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and Gekko will update its data on every interval.
+          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. Gekko will update its data on every interval.
             
         .grd-row
           .grd-row-col-3-6
@@ -42,7 +42,7 @@
          h3.center5 Parameters
           .tooltip
             img(src='/assets/Question.jpg', width='20', height='20')
-            span.tooltiptext Parameters are the stategy rules for each strategy you can customize according to need
+            span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
       hr
       div
         p.strategy_header {{ strategy }} Parameters:
@@ -79,7 +79,7 @@ export default {
   created: function () {
 
 
-    //form what i can understand this is a get request that references the strategies.js in the router folder
+    //from what I can understand this is a get request that references the strategies.js in the router folder
     //I believe it is returning data for each .toml file
     get('strategies', (err, data) => {
 
@@ -90,7 +90,7 @@ export default {
           s.empty = s.params === '';
         });
 
-        //this gets the strategies from 'this.strategies'. it is useing the .find()
+        //this gets the strategies from 'this.strategies'. it is using the .find()
         //first parameter 
         this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
 
@@ -133,6 +133,9 @@ export default {
       } else if(strat ==='UO'){
         this.strategyInfo= ' More Information About UO Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
+      } else if(strat ==='custom'){
+        this.strategyInfo= ' More Information About Custom Strategies Visit '
+        this.strategyUrl = '#/customstrategyexplanation/customstrategyexplanation'
       } else{
         this.strategyInfo= ' There is Currently No Support Information '
         this.strategyUrl = 'javascript:void(0);'
