@@ -89,6 +89,7 @@ export default {
 
 .radio_button_margins{
  margin: 0 auto;
+ width: 10%;
 }
 
 </style>
