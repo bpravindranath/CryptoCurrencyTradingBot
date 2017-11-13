@@ -3,7 +3,8 @@
   .px1
     h3.center2 Paper trader
     em(v-if='toggle === "closed"')
-      a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
+      div.sub-header-text
+        a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
     template(v-if='toggle === "open"')
       p Settings:
       textarea.params(v-model='rawPaperTraderParams')
@@ -71,7 +72,8 @@ export default {
   padding-left: 1em;
 }
 
-.center6{
-  justify-content: center;
+.sub-header-text{
+text-align: center;
+ 
 }
 </style>

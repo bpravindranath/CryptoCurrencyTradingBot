@@ -14,7 +14,8 @@ div
             img(src='/assets/question_yellow.jpeg', width='10', height='10')
             span.tooltiptext2(v-if="type === 'paper trader'"){{paperData}}
             span.tooltiptext2(v-if="type === 'market watcher'") {{marketData}}
-            span.tooltiptext2(v-if="type === 'tradebot'") {{botData}}
+            span.tooltiptext2(v-if="type === 'tradebot'") {{botData}} 
+          
         input.radio_button_margins(type='radio', :value='i', v-model='selectedTypeIndex')
           
                 
@@ -87,7 +88,7 @@ export default {
 }
 
 .radio_button_margins{
-  margin-left: 50%;
+ margin: 0 auto;
 }
 
 </style>
