@@ -1,11 +1,11 @@
 <template lang='jade'>
 .contain
   dataset-picker.contain.my2(v-on:dataset='updateDataset')
-  .hr
+  hr
   strat-picker.contain.my2(v-on:stratConfig='updateStrat')
-  .hr
+  hr
   paper-trader(v-on:settings='updatePaperTrader')
-  .hr
+  hr
 </template>
 
 <script>
