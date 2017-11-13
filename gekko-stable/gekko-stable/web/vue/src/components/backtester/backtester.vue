@@ -1,5 +1,5 @@
 <template lang='jade'>
-  .reduced-margin
+.reduced-margin
   div
     h2.contain.center Backtest
     hr.contain
