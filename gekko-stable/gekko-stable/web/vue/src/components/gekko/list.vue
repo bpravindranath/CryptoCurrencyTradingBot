@@ -2,7 +2,8 @@
 .reduced-margin
   .contain.py2
     //- .text(v-html='text')
-    h2.col-4.center Your Trade Bots and Market Watchers
+    h2.col-4.center Trade Bots & <br> Market Watchers
+    hr
     h3.col-4.center Start a New Trade Bot or Market Watcher   
     div.button_center
        router-link.router-link(to='/live-gekkos/new') 
@@ -11,7 +12,7 @@
     div.button_center
        h3 Market Watchers
     div.sub-header-text
-       .text(v-if='!watchers.length')
+       span(v-if='!watchers.length')
           p You are currently not watching any markets.
     table.full.clickable(v-if='watchers.length')
       thead
@@ -37,7 +38,7 @@
     div.button_center
       h3 Trade Bots
     div.sub-header-text
-      .text(v-if='!stratrunners.length')
+      span(v-if='!stratrunners.length')
         p You are currently not running any strategies.
     table.full(v-if='stratrunners.length')
       thead
@@ -130,6 +131,10 @@ export default {
 .sub-header-text{
 text-align: center;
  
+}
+
+.sub-header-inside{
+  display: inline-block;
 }
 
 .button_center{
