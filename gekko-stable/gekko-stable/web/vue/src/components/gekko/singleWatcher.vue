@@ -1,11 +1,13 @@
 <template lang='jade'>
-  div.my2
-    .contain(v-if='!data')
+ .reduced-margin
+   div.my2
+    .flex-container4(v-if='!data')
       h1 Unknown Watcher
       p Gekko doesn't know what whatcher this is...
-    div(v-if='data')
-      h2.contain Market Watcher
-      .grd.contain
+   .reduced-margin
+    .flex-container4(v-if='data')
+      h2 Market Watcher
+      .grd
         h3 Market
         .grd-row
           .grd-row-col-2-6 Exchange
@@ -20,19 +22,19 @@
         spinner(v-if='isLoading')
         template(v-if='!isLoading')
           .grd-row(v-if='data.firstCandle')
-            .grd-row-col-2-6 Watching since
+            .grd-row-col-2-6 Watching Since
             .grd-row-col-4-6 {{ fmt(data.firstCandle.start) }}
           .grd-row(v-if='data.lastCandle')
-            .grd-row-col-2-6 Received data until
+            .grd-row-col-2-6 Last Data Update 
             .grd-row-col-4-6 {{ fmt(data.lastCandle.start) }}
           .grd-row(v-if='data.lastCandle && data.firstCandle')
-            .grd-row-col-2-6 Data spanning
+            .grd-row-col-2-6 Data Spanning
             .grd-row-col-4-6 {{ humanizeDuration(moment(data.lastCandle.start).diff(moment(data.firstCandle.start))) }}
-      template(v-if='!isLoading')
-        h3.contain Market graph
-        spinner(v-if='candleFetch === "fetching"')
-        template(v-if='candles.length')
-          chart(:data='chartData', :height='500')
+    template(v-if='!isLoading')
+      h3 Market Graph
+      spinner(v-if='candleFetch === "fetching"')
+      template(v-if='candles.length')
+        chart(:data='chartData', :height='500')
 </template>
 
 <script>
@@ -150,4 +152,7 @@ export default {
 </script>
 
 <style>
+  .reduced-margin{
+    margin-left: -20%;
+  }
 </style>
