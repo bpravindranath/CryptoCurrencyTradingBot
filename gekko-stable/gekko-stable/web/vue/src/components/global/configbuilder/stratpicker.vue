@@ -16,7 +16,7 @@
             option(v-for='strat in strategies') {{ strat.name }}
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
         span 
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Their Website
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Website
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
@@ -72,7 +72,7 @@ export default {
       emptyStrat: false,
       stratParams: {},
 
-      strategyInfo: ' More Details about MACD Strategy Visit ',
+      strategyInfo: ' More Details about MACD Strategy Visit This ',
       strategyUrl: 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/',
     };
   },
@@ -107,37 +107,37 @@ export default {
 
          
       if (strat === 'MACD'){
-         this.strategyInfo = ' For More Details about MACD Strategy Visit '
+         this.strategyInfo = ' For More Details about MACD Strategy Visit This '
          this.strategyUrl = 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/'
       }else if(strat ==='CCI'){
-        this.strategyInfo= ' For More Information About CCI Strategy Visit '
+        this.strategyInfo= ' For More Information About CCI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/articles/active-trading/031914/how-traders-can-utilize-cci-commodity-channel-index-trade-stock-trends.asp'
       } else if(strat ==='DEMA'){
-        this.strategyInfo= ' For More Information About DEMA Strategy Visit '
+        this.strategyInfo= ' For More Information About DEMA Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/120414/what-are-common-trading-strategies-used-double-exponential-moving-average-dema.asp'
       } else if(strat ==='PPO'){
-        this.strategyInfo= ' For More Information About PPO Strategy Visit '
+        this.strategyInfo= ' For More Information About PPO Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/021315/what-common-strategy-traders-implement-when-using-percentage-price-oscillator-ppo.asp'
       } else if(strat ==='RSI'){
-        this.strategyInfo= ' For More Information About RSI Strategy Visit '
+        this.strategyInfo= ' For More Information About RSI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/012015/how-do-i-use-relative-strength-index-rsi-create-forex-trading-strategy.asp'
       } else if(strat ==='StochRSI'){
-        this.strategyInfo= ' For More Information About StochRSI Strategy Visit '
+        this.strategyInfo= ' For More Information About StochRSI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031315/how-do-i-build-profitable-strategy-when-spotting-stochrsi-pattern.asp'
       } else if(strat ==='TSI'){
-        this.strategyInfo= ' For More Information About TSI Strategy Visit '
+        this.strategyInfo= ' For More Information About TSI Strategy Visit This'
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/how-are-true-strength-index-tsi-patterns-interpreted-analysts-and-traders.asp'
       } else if(strat ==='UO'){
-        this.strategyInfo= ' For More Information About UO Strategy Visit '
+        this.strategyInfo= ' For More Information About UO Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
       } else if(strat ==='UO'){
-        this.strategyInfo= ' For More Information About UO Strategy Visit '
+        this.strategyInfo= ' For More Information About UO Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
       } else if(strat ==='custom'){
-        this.strategyInfo= ' For More Information About Custom Strategies Visit '
+        this.strategyInfo= ' For More Information About Custom Strategies Visit This '
         this.strategyUrl = '#/customstrategyexplanation/customstrategyexplanation'
       } else{
-        this.strategyInfo= ' There is Currently No Support Information '
+        this.strategyInfo= ' There is Currently No Support Information This'
         this.strategyUrl = 'javascript:void(0);'
       }
 
