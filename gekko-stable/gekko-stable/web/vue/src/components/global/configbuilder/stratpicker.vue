@@ -6,7 +6,7 @@
       .grd-row.center4
         h3 Strategy
           .tooltip
-            img(src='/assets/Question.jpg', width='20', height='20')
+            img(src='/assets/question_yellow.jpeg', width='20', height='20')
             span.tooltiptext A strategy is a combination of functions that gets market data in the form of candles (OHLC, volume and the average weighted price, etc.) and makes buy and sell decisions based on parameter settings.
       hr
       div
@@ -16,11 +16,11 @@
             option(v-for='strat in strategies') {{ strat.name }}
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
         span 
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Here
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Their Website
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
-          img(src='/assets/Question.jpg', width='10', height='10')
+          img(src='/assets/question_yellow.jpeg', width='10', height='10')
           span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. Gekko will update its data on every interval.
             
         .grd-row
@@ -41,7 +41,7 @@
       .grid-row
          h3.center5 Parameters
           .tooltip
-            img(src='/assets/Question.jpg', width='20', height='20')
+            img(src='/assets/question_yellow.jpeg', width='20', height='20')
             span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
       hr
       div
@@ -107,34 +107,34 @@ export default {
 
          
       if (strat === 'MACD'){
-         this.strategyInfo = ' More Details about MACD Strategy Visit '
+         this.strategyInfo = ' For More Details about MACD Strategy Visit '
          this.strategyUrl = 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/'
       }else if(strat ==='CCI'){
-        this.strategyInfo= ' More Information About CCI Strategy Visit '
+        this.strategyInfo= ' For More Information About CCI Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/articles/active-trading/031914/how-traders-can-utilize-cci-commodity-channel-index-trade-stock-trends.asp'
       } else if(strat ==='DEMA'){
-        this.strategyInfo= ' More Information About DEMA Strategy Visit '
+        this.strategyInfo= ' For More Information About DEMA Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/120414/what-are-common-trading-strategies-used-double-exponential-moving-average-dema.asp'
       } else if(strat ==='PPO'){
-        this.strategyInfo= ' More Information About PPO Strategy Visit '
+        this.strategyInfo= ' For More Information About PPO Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/021315/what-common-strategy-traders-implement-when-using-percentage-price-oscillator-ppo.asp'
       } else if(strat ==='RSI'){
-        this.strategyInfo= ' More Information About RSI Strategy Visit '
+        this.strategyInfo= ' For More Information About RSI Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/012015/how-do-i-use-relative-strength-index-rsi-create-forex-trading-strategy.asp'
       } else if(strat ==='StochRSI'){
-        this.strategyInfo= ' More Information About StochRSI Strategy Visit '
+        this.strategyInfo= ' For More Information About StochRSI Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031315/how-do-i-build-profitable-strategy-when-spotting-stochrsi-pattern.asp'
       } else if(strat ==='TSI'){
-        this.strategyInfo= ' More Information About TSI Strategy Visit '
+        this.strategyInfo= ' For More Information About TSI Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/how-are-true-strength-index-tsi-patterns-interpreted-analysts-and-traders.asp'
       } else if(strat ==='UO'){
-        this.strategyInfo= ' More Information About UO Strategy Visit '
+        this.strategyInfo= ' For More Information About UO Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
       } else if(strat ==='UO'){
-        this.strategyInfo= ' More Information About UO Strategy Visit '
+        this.strategyInfo= ' For More Information About UO Strategy Visit '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
       } else if(strat ==='custom'){
-        this.strategyInfo= ' More Information About Custom Strategies Visit '
+        this.strategyInfo= ' For More Information About Custom Strategies Visit '
         this.strategyUrl = '#/customstrategyexplanation/customstrategyexplanation'
       } else{
         this.strategyInfo= ' There is Currently No Support Information '
