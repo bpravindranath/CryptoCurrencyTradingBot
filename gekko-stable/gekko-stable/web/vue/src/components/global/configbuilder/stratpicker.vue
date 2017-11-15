@@ -48,6 +48,41 @@
         p.strategy_header {{ strategy }} Parameters:
         textarea.TextAreacolor.params(v-model='rawStratParams')
         p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
+          //- template(v-for='cred in strategies')
+          //-   input {{ cred }}
+          
+      
+      
+      
+        
+      span(v-if="strategy === 'custom'")
+        h3 Buy Immediately
+          input.Inputcolor(v-model='stratParams.buyImmediately')
+        h3 Trade Factors
+          input.Inputcolor(v-model='stratParams.tradeFactors')
+        h3 Price Type
+          input.Inputcolor(v-model='stratParams.priceType')
+        h3 Buy If Vol
+          input.Inputcolor(v-model='stratParams.buyIfVol')
+        h3 sellIfVol
+          input.Inputcolor(v-model='stratParams.sellIfVol')
+        h3 changeType
+          input.Inputcolor(v-model='stratParams.changeType')
+        h3 Buy Price Persistence Threshold
+          input.Inputcolor(v-model='stratParams.buyPricePersistenceThreshold')
+        h3 Sell Price Persistence Threshold
+          input.Inputcolor(v-model='stratParams.sellPricePersistenceThreshold')
+        h3 Buy Vol Persistence Threshold
+          input.Inputcolor(v-model='stratParams.buyVolPersistenceThreshold')
+        h3 sell Vol Persistence Threshold
+          input.Inputcolor(v-model='stratParams.sellVolPersistenceThreshold')
+        h3 Price Protection
+          input.Inputcolor(v-model='stratParams.priceProtection')
+        h3 Next Action Buy
+          input.Inputcolor(v-model='stratParams.nextActionBuy')
+        h3 Next Action Sell
+          input.Inputcolor(v-model='stratParams.nextActionSell')
+      
     
 </template>
 
@@ -74,35 +109,49 @@ export default {
 
       strategyInfo: ' More Details about MACD Strategy Visit This ',
       strategyUrl: 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/',
+
+      
     };
   },
   created: function () {
+    // *********
+    // created function: this function initialize the strategies from the router strategies.js
+    // ********
 
 
     //from what I can understand this is a get request that references the strategies.js in the router folder
     //I believe it is returning data for each .toml file
     get('strategies', (err, data) => {
 
-        //return message with data from get request
+        //return message with data from Get request
         this.strategies = data;
+
 
         _.each(this.strategies, function(s) {
           s.empty = s.params === '';
         });
+      // returns a list of parameters for MACD strategy which is the given initial value
 
-        //this gets the strategies from 'this.strategies'. it is using the .find()
-        //first parameter 
+       //Option 1: parse the TOML into JSON
+        // this.rawStratParams = toml.parse(_.find(this.strategies, { name: this.strategy }).params);
+       
+       //Option 2: does not parse TOML into JSON
         this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
 
-       
+        this.stratParams = toml.parse(rawStratParams);
+
+
         //checks if strategies have any parameters or not
         this.emptyStrat = _.find(this.strategies, { name: this.strategy }).empty;
 
-
+        //calls function that will load data from rawStratParams into config
         this.emitConfig();
     });
   },
   watch: {
+     // *********
+    // watch function: this function watches when user changes strategies and parameter data
+    // ********
     strategy: function(strat) {
 
          
@@ -141,13 +190,17 @@ export default {
         this.strategyUrl = 'javascript:void(0);'
       }
 
-
+      //listens when user changes strategy
       strat = _.find(this.strategies, { name: strat });
 
     //this might be the strategies we edit. he makes a copy that he creates the config with
+    //this changes the input when a user selects a different strategy
+
+      // this.rawStratParams = toml.parse(start.params);
       this.rawStratParams = strat.params;
 
 
+      // this.stratParams = this.rawStratParams;
       this.emptyStrat = strat.empty;
 
 
@@ -191,7 +244,7 @@ export default {
         config[this.strategy] = {__empty: true}
       else
         config[this.strategy] = this.stratParams;
-        //puts strategies into config
+        //puts json strategies into config
 
       return config;
     }
@@ -201,12 +254,19 @@ export default {
     emitConfig: function() {
       this.parseParams();
 
+
+      //calls the config function to put data in JSON format to send to parent which I believe is new.js. 
+      //So final form of data is JSON
       this.$emit('stratConfig', this.config);
     },
     parseParams: function() {
+
+        // *********
+    // paraseParams function: this function should take values and put them into stratParams
+    // ********
       try {
-
-
+        // alert(this.rawStratParams);
+        //parse raw parameters back to strats
         this.stratParams = toml.parse(this.rawStratParams);
         this.rawStratParamsError = false;
       } catch(e) {
