@@ -6,7 +6,7 @@
       div.sub-header-text
         a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
     template(v-if='toggle === "open"')
-      p Settings:
+      p Settings:     
       textarea.params(v-model='rawPaperTraderParams')
       p.bg--red.p1(v-if='rawPaperTraderParamsError') {{ rawPaperTraderParamsError.message }}
 </template>
@@ -53,7 +53,7 @@ export default {
         this.rawPaperTraderParamsError = e;
         this.paperTraderParams = {};
       }
-    }
+    }   
   }
 }
 </script>
