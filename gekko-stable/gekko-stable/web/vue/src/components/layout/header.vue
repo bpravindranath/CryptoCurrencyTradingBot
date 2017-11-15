@@ -6,7 +6,7 @@
         <router-link to='/home'><img src='/assets/Gekko_TUHeader.jpg'></router-link>
         
     .flex-container2
-      .flex-container3.twitter-height
+      .flex-container3
           .menu
              router-link(to='/live-gekkos').py1 Trade Bots <br>& Market Watchers
              router-link(to='/backtest').py1 Backtests
@@ -27,11 +27,6 @@
 </script>
 
 <style>
-
-
-
-
-
 
 .twitter-height{
   height: 100%;

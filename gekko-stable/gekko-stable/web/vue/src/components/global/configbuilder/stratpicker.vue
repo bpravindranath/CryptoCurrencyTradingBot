@@ -83,6 +83,15 @@
         h3 Next Action Sell
           input.Inputcolor(v-model='stratParams.nextActionSell')
       
+      #paramSection
+        p.strategy_header {{ strategy }} Parameters: 
+        .center-button
+         a(href='#paramSection' v-on:click="showHide")   
+          button.button_color Show/Hide Parameter Settings
+        .reduced-div-margin
+        #parameterDiv        
+         textarea.TextAreacolor.params(v-model='rawStratParams')
+         p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
     
 </template>
 
@@ -273,6 +282,15 @@ export default {
         this.rawStratParamsError = e;
         this.stratParams = {};
       }
+    },
+    
+    showHide: function(){
+      var x = document.getElementById("parameterDiv");
+      if (x.style.display === "none" || x.style.display === "") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }   
     }
   }
 }
@@ -369,8 +387,19 @@ export default {
 }
 
 
+#parameterDiv{
+    display:none;
+}
 .reduced-margin{
     margin-left: -30%;
   }
+  
+.reduced-div-margin{
+    margin-left: -60%;
+  }  
+
+.center-button{
+    margin-left:30%;
+}
 
 </style>
