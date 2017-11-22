@@ -7,7 +7,9 @@
         h3 Strategy
           .tooltip
             img(src='/assets/question_yellow.jpeg', width='20', height='20')
-            span.tooltiptext A strategy is a combination of functions that gets market data in the form of candles (OHLC, volume and the average weighted price, etc.) and makes buy and sell decisions based on parameter settings.
+            span.tooltiptext Strategy 
+              hr(width='70%')
+              span A strategy is a combination of functions that gets market data in the form of candles (OHLC, volume and the average weighted price, etc.) and makes buy and sell decisions based on parameter settings.
       hr
       div
         label(for='strat').exchange_align.wrapper.strategy_header Strategy:
@@ -15,7 +17,7 @@
           select(v-model='strategy')
             option(v-for='strat in strategies') {{ strat.name }}
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
-        span 
+        span(v-if="present")
           a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Website
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
@@ -36,7 +38,7 @@
         h5.font_bold(for='historySize').strategy_header Warmup period (in {{ rawCandleSize }} {{ singularCandleSizeUnit }} candles):
         input.Inputcolor(v-model='historySize')
         em.label-like.strategy_header (will use {{ humanizeDuration(candleSize * historySize * 1000 * 60) }} of data as history)
-  .grid-row
+  .grid-row.center
     .grd-row-col-6-6.px1
       .grid-row
          h3.center5 Parameters
@@ -45,59 +47,1302 @@
             span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
       hr
       div
-        p.strategy_header {{ strategy }} Parameters:
-        textarea.TextAreacolor.params(v-model='rawStratParams')
-        p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
-          //- template(v-for='cred in strategies')
-          //-   input {{ cred }}
-          
+        span.h5 {{ strategy }} 
+        span.h5 Parameters
+        hr(width='70%')
+
+
+        //- textarea.TextAreacolor.params(v-model='rawStratParams')
+        
+        //- p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
+
+
+      //--------------------------------------- MACD STRATEGY------------------------------------   
+      span(v-if="strategy === 'MACD'")
       
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Short
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SHORT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.short')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Long
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LONG 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.long')
+
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Signal
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SIGNAL 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.signal')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Down
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font DOWN 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.down')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Up
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font UP
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.up')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+ 
+      //--------------------------------------- UO STRATEGY------------------------------------   
+      span(v-if="strategy === 'UO'")
       
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight First-Weight
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font FIRST-WEIGHT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.first.weight')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight First-Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font FIRST-PERIOD  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.first.period')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Second-Weight
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SECOND-WEIGHT  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.second.weight')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Second-Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SECOND-PERIOD  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.second.period')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Third-Weight
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font THIRD-WEIGHT  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.third.weight')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Third-Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font THIRD-PERIOD  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.third.period')
+
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Low
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LOW 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.low')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight High
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font High
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.high')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h6.font_weight.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+
+
+
+
+      //--------------------------------------- TALIB-MACD STRATEGY------------------------------------   
+      span(v-if="strategy === 'talib-macd'")
+      
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Opt In Fast Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font OPT IN FAST PERIOD 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.parameters.optInFastPeriod')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Opt In Slow Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font OPT IN SLOW PERIOD 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.parameters.optInSlowPeriod')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Opt In Signal Period
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font OPT IN SIGNAL PERIOD  
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.parameters.optInSignalPeriod')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Down
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font DOWN 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.down')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Up
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font UP
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.up')
+        
+
+
+
+      //--------------------------------------- VAR-PPO STRATEGY------------------------------------   
+      span(v-if="strategy === 'varPPO'")
       
         
-      span(v-if="strategy === 'custom'")
-        h3 Buy Immediately
-          input.Inputcolor(v-model='stratParams.buyImmediately')
-        h3 Trade Factors
-          input.Inputcolor(v-model='stratParams.tradeFactors')
-        h3 Price Type
-          input.Inputcolor(v-model='stratParams.priceType')
-        h3 Buy If Vol
-          input.Inputcolor(v-model='stratParams.buyIfVol')
-        h3 sellIfVol
-          input.Inputcolor(v-model='stratParams.sellIfVol')
-        h3 changeType
-          input.Inputcolor(v-model='stratParams.changeType')
-        h3 Buy Price Persistence Threshold
-          input.Inputcolor(v-model='stratParams.buyPricePersistenceThreshold')
-        h3 Sell Price Persistence Threshold
-          input.Inputcolor(v-model='stratParams.sellPricePersistenceThreshold')
-        h3 Buy Vol Persistence Threshold
-          input.Inputcolor(v-model='stratParams.buyVolPersistenceThreshold')
-        h3 sell Vol Persistence Threshold
-          input.Inputcolor(v-model='stratParams.sellVolPersistenceThreshold')
-        h3 Price Protection
-          input.Inputcolor(v-model='stratParams.priceProtection')
-        h3 Next Action Buy
-          input.Inputcolor(v-model='stratParams.nextActionBuy')
-        h3 Next Action Sell
-          input.Inputcolor(v-model='stratParams.nextActionSell')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Momentum
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font MOMENTUM 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.momentum')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Weight Low
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font WEIGHT LOW 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.weightLow')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Weight High
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font WEIGHT HIGH
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.weightHigh')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
       
-      #paramSection
-        p.strategy_header {{ strategy }} Parameters: 
-        .center-button
-         a(href='#paramSection' v-on:click="showHide")   
-          button.button_color Show/Hide Parameter Settings
-        .reduced-div-margin
-        #parameterDiv        
-         textarea.TextAreacolor.params(v-model='rawStratParams')
-         p.bg--red.p1(v-if='rawStratParamsError') {{ rawStratParamsError.message }}
-    
+
+
+
+
+
+
+      //--------------------------------------- RSI STRATEGY------------------------------------   
+      span(v-if="strategy === 'RSI'")
+      
+        
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Interval
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font INTERVAL 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.interval')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Low
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LOW 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.low')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight High
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font HIGH
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.high')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+      
+
+      //--------------------------------------- STOCH-RSI STRATEGY------------------------------------   
+      span(v-if="strategy === 'StochRSI'")
+      
+        
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Interval
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font INTERVAL 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.interval')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Low
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LOW 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.low')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight High
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font HIGH
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.high')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+      
+      
+
+      //--------------------------------------- TSI STRATEGY------------------------------------   
+      span(v-if="strategy === 'TSI'")
+      
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Short
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SHORT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.short')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Long
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LONG 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.long')
+        
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Low
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LOW 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.low')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight High
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font HIGH
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.high')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+      
+
+
+
+
+
+
+      //--------------------------------------- PPO STRATEGY------------------------------------   
+      span(v-if="strategy === 'PPO'")
+      
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Short
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SHORT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.short')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Long
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LONG 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.long')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Signal
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SIGNAL 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.signal')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Down
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font DOWN 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.down')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight Up
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font UP
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.up')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+      
+      
+      
+      //--------------------------------------- DEMA STRATEGY------------------------------------   
+      span(v-if="strategy === 'DEMA'")
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Short
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font SHORT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.short')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight.font_weight Long
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font LONG 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.long')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight.font_weight Down
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font DOWN
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.down')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight.font_weight Up
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font UP
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.up')
+        
+
+      //--------------------------------------- CCI STRATEGY------------------------------------   
+      span(v-if="strategy === 'CCI'")
+      
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight.font_weight Constant
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font CONSTANT 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.constant')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight.font_weight History
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font HISTORY 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.history')
+       
+        h4.center Thresholds
+        hr(width='70%')
+
+        .grd-row  
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight.font_weight Up
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font UP 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.down')
+
+          .grd-row-col-2-6.mx1.center_box  
+            h6.font_weight.font_weight Down
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font Down
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.up')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight.font_weight Persistence
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font PERSISTENCE 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
+
+
+
+      //--------------------------------------- DEBUG-ADVICE STRATEGY------------------------------------ 
+      span(v-if="strategy === 'debug-advice'")
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h4.font_weight.font_weight No Strategy Parameters Listed...
+              
+
+      //--------------------------------------- NOOP STRATEGY------------------------------------ 
+      span(v-if="strategy === 'noop'")
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h4.font_weight.font_weight No Strategy Parameters Listed...
+
+
+
+
+
+      //--------------------------------------- CUSTOM STRATEGY------------------------------------     
+      span(v-if="strategy === 'custom'")
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Trade Based On
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font TRADE BASED ON 
+                  hr(width='70%')
+                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+              .custom-select.button
+                select(v-model='tradeFactors')
+                  option(disabled='', value='') Please select one
+                  option price
+                  option volume
+                  option price and volume
+                  option thresholds
+                    
+              
+        span(v-if="tradeFactors === 'price and volume'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy If There's a Price
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY PRICE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='buyIfPrice')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell If There's a Price
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL PRICE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='sellIfPrice')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+          .grd-row          
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy If There's a Trade Volume
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY VOLUME
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='buyIfVol')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell If There's a Trade Volume
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL VOLUME
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='sellIfVol')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+      
+        span(v-if="tradeFactors === 'price'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy If There's a Price
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY PRICE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='buyIfPrice')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell If There's a Price
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL PRICE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='sellIfPrice')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+        span(v-if="tradeFactors === 'volume'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy If There's a Trade Volume
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY VOLUME
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='buyIfVol')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+                  
+            h6.font_weight AND
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell If There's a Trade Volume
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL VOLUME
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='sellIfVol')
+                    option(disabled='', value='') Please select one
+                    option increase
+                    option decrease
+
+        span(v-if="tradeFactors === 'thresholds'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Price Type
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font PRICE TYPE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='priceType')
+                    option(disabled='', value='') Please select one
+                    option Open
+                    option Close
+
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy Price Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.thresholds.buyPriceThreshold')
+              h5.font_weight Buy When Price is {{rawStratParams.thresholds.buyPriceThreshold}} or Less
+
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Sell Price Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.thresholds.sellPriceThreshold')
+              h5.font_weight Sell When Price is {{rawStratParams.thresholds.sellPriceThreshold}} or Higher
+            
+            
+            
+
+        //--------------------------------------- CHANGE TYPE PARAMETER  # | % ----------------------------------     
+        
+        
+        span(v-if="tradeFactors !== 'thresholds'")
+          hr(width='70%')
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Change Type
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font CHANGE TYPE 
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='changeType')
+                    option(disabled='', value='') Please select one
+                    option #
+                    option %
+          
+        //-----------------------------------SECTION INTRODUCTION-----------------------------------
+        //- User Will Choose either '#'' or '%'.
+        //- Now depending on above input from TradeFactor(Price, Volume, Price and Volume or Threshold) and BuyIfPrice/Vol (increase, decrease) and SellIfPrice/Vol (increase)
+        //- Different parameters will appear according to a combination of options
+        
+        
+        //- Example:
+        //- if (changeType === '#' &&  tradeFactors === 'Price' 
+        //-     && buyIfPrice ==='increase' $$ sellIfPrice ==='decrease')
+        //- then 
+        //-    1)User sets price to Buy where there is a price increase
+               2)User sets price to sell where there is a price decrease 
+        
+        
+        //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
+        span(v-if="changeType === '#'")
+          .grd-row
+           
+            //--------------------------------------- FIRST INPUT BOX ---------------------------------- 
+            .grd-row-col-2-6.mx1.center_box
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
+              span(v-if="tradeFactors === 'price'")
+               
+                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
+                span(v-if="buyIfPrice ==='decrease'")
+                  h6.font_weight Buy If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    
+                    
+                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
+                span(v-if="buyIfPrice ==='increase'")
+                  h6.font_weight Buy If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt')
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'volume'")
+                
+                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
+                span(v-if="buyIfVol ==='decrease'")
+                  h6.font_weight Buy If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+
+                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
+                span(v-if="buyIfVol ==='increase'")
+                  h6.font_weight Buy If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+              
+
+
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'price and volume'")
+                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
+                span(v-if="buyIfPrice ==='decrease'")
+                  h6.font_weight Buy If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    
+                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
+                span(v-if="buyIfPrice ==='increase'")
+                  h6.font_weight Buy If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+               
+                
+                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
+                span(v-if="buyIfVol ==='decrease'")
+                  h6.font_weight Buy If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+
+                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
+                span(v-if="buyIfVol ==='increase'")
+                  h6.font_weight Buy If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+              
+
+            
+            
+            //--------------------------------------- Second INPUT BOX ---------------------------------- 
+            .grd-row-col-2-6.mx1.center_box
+             
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
+              span(v-if="tradeFactors === 'price'")
+              
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfPrice ==='decrease'")
+                  h6.font_weight Sell If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+               
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfPrice ==='increase'")
+                  h6.font_weight Sell If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'volume'")
+                
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfVol ==='decrease'")
+                  h6.font_weight Sell If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfVol ==='increase'")
+                  h6.font_weight Sell If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+              
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'price and volume'")
+                
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfPrice ==='decrease'")
+                  h6.font_weight Sell If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+               
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfPrice ==='increase'")
+                  h6.font_weight Sell If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfVol ==='decrease'")
+                  h6.font_weight Sell If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfVol ==='increase'")
+                  h6.font_weight Sell If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+              
+        //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
+        span(v-if="changeType === '%'")
+          .grd-row
+           
+            //--------------------------------------- FIRST INPUT BOX ---------------------------------- 
+            .grd-row-col-2-6.mx1.center_box
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
+              span(v-if="tradeFactors === 'price'")
+               
+                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
+                span(v-if="buyIfPrice ==='decrease'")
+                  h6.font_weight Buy If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    
+                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
+                span(v-if="buyIfPrice ==='increase'")
+                  h6.font_weight Buy If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt')
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'volume'")
+                
+                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
+                span(v-if="buyIfVol ==='decrease'")
+                  h6.font_weight Buy If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+
+                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
+                span(v-if="buyIfVol ==='increase'")
+                  h6.font_weight Buy If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+              
+
+
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'price and volume'")
+                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
+                span(v-if="buyIfPrice ==='decrease'")
+                  h6.font_weight Buy If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    
+                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
+                span(v-if="buyIfPrice ==='increase'")
+                  h6.font_weight Buy If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+               
+                
+                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
+                span(v-if="buyIfVol ==='decrease'")
+                  h6.font_weight Buy If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+
+                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
+                span(v-if="buyIfVol ==='increase'")
+                  h6.font_weight Buy If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font BUY VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+            
+            
+            //--------------------------------------- Second INPUT BOX ---------------------------------- 
+            .grd-row-col-2-6.mx1.center_box
+             
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
+              span(v-if="tradeFactors === 'price'")
+              
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfPrice ==='decrease'")
+                  h6.font_weight Sell If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+               
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfPrice ==='increase'")
+                  h6.font_weight Sell If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'volume'")
+                
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfVol ==='decrease'")
+                  h6.font_weight Sell If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfVol ==='increase'")
+                  h6.font_weight Sell If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+              
+              
+              //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
+              span(v-if="tradeFactors === 'price and volume'")
+                
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfPrice ==='decrease'")
+                  h6.font_weight Sell If There's a Price decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+               
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfPrice ==='increase'")
+                  h6.font_weight Sell If There's a Price increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL PRICE
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
+                span(v-if="sellIfVol ==='decrease'")
+                  h6.font_weight Sell If There's a Volume decrease
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    
+                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
+                span(v-if="sellIfVol ==='increase'")
+                  h6.font_weight Sell If There's a Volume increase
+                    .tooltip
+                      img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                      h3.tooltiptext.tooltip_font SELL VOLUME
+                        hr(width='70%')
+                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+
+
+        //--------------------------------------- PRICE/VOLUME PERSISTENCE THRESHOLD   ----------------------------------       
+        
+        
+        //--------------------------------------- CHANGETYPE PARAMETER  === #  ---------------------------------- 
+        span(v-if="tradeFactors === 'price'")
+          hr(width='70%')
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy Price Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY PRICE PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.buyPricePersistenceThreshold') 
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell Price Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL PRICE PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
+        
+
+        span(v-if="tradeFactors === 'volume'")
+          hr(width='70%')
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
+
+        
+
+
+        span(v-if="tradeFactors != 'thresholds'")
+          hr(width='70%')
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Price Protection
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font PRICE PROTECTION 
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  //- input.Inputcolor(v-model='rawStratParams.Protection')
+                .custom-select.button
+                  select(v-model='price_Protect')
+                    option(disabled='', value='') Please select one
+                    option disabled
+                    option enabled 
+        hr(width='70%')
+        .grd-row
+          .grd-row-col-2-6.mx1.center_box
+            h6.font_weight Buy Immediately 
+              .tooltip
+                img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                h3.tooltiptext.tooltip_font BUY IMMEDIATELY 
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+              .custom-select.button
+                select(v-model='Buy_Imm')
+                  option(disabled='', value='') Please select one
+                  option yes
+                  option no
+                          
+                      
+       
+       
+       
+        
+      
 </template>
 
 <script>
+
+
 import _ from 'lodash'
 import { get } from '../../../tools/ajax'
+
 
 export default {
   data: () => {
@@ -107,7 +1352,7 @@ export default {
       candleSizeUnit: 'hours',
       rawCandleSize: 1,
 
-      strategy: 'MACD',
+      strategy: 'custom',
       historySize: 10,
 
       rawStratParams: '',
@@ -119,8 +1364,21 @@ export default {
       strategyInfo: ' More Details about MACD Strategy Visit This ',
       strategyUrl: 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/',
 
-      
+      present: true,
+      tradeFactors: '',
+      buyIfPrice: '',
+      sellIfPrice: '',
+      buyIfVol: '',
+      sellIfVol: '',
+      priceType: '',
+      changeType: '',
+      price_Protect: '',
+      Buy_Imm: ''
+
     };
+  },components: {
+
+    
   },
   created: function () {
     // *********
@@ -131,28 +1389,37 @@ export default {
     //from what I can understand this is a get request that references the strategies.js in the router folder
     //I believe it is returning data for each .toml file
     get('strategies', (err, data) => {
-
+     
+        //ORIGINAL
         //return message with data from Get request
         this.strategies = data;
-
-
+        
+        //ORIGINAL
         _.each(this.strategies, function(s) {
           s.empty = s.params === '';
         });
+
       // returns a list of parameters for MACD strategy which is the given initial value
 
-       //Option 1: parse the TOML into JSON
-        // this.rawStratParams = toml.parse(_.find(this.strategies, { name: this.strategy }).params);
-       
+        //NOT ORIGINAL
+        //Option 1: parse the TOML into JSON
+        this.rawStratParams = toml.parse(_.find(this.strategies, { name: this.strategy }).params);
+      //  alert(this.rawStratParams.short);
+       //ORIGINAL
        //Option 2: does not parse TOML into JSON
-        this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
-
-        this.stratParams = toml.parse(rawStratParams);
+        // this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
 
 
+
+
+        //NOT ORIGINAL
+        // this.stratParams = rawStratParams;
+
+        //ORIGINAL
         //checks if strategies have any parameters or not
         this.emptyStrat = _.find(this.strategies, { name: this.strategy }).empty;
 
+        //ORIGINAL
         //calls function that will load data from rawStratParams into config
         this.emitConfig();
     });
@@ -161,64 +1428,82 @@ export default {
      // *********
     // watch function: this function watches when user changes strategies and parameter data
     // ********
-    strategy: function(strat) {
-
+    strategy: function(strat, tradeFactors) {
          
+     
       if (strat === 'MACD'){
-         this.strategyInfo = ' For More Details about MACD Strategy Visit This '
-         this.strategyUrl = 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/'
+        this.strategyInfo = ' For More Details about MACD Strategy Visit This '
+        this.strategyUrl = 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/'
+        this.present = true;
       }else if(strat ==='CCI'){
         this.strategyInfo= ' For More Information About CCI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/articles/active-trading/031914/how-traders-can-utilize-cci-commodity-channel-index-trade-stock-trends.asp'
+        this.present = true;
       } else if(strat ==='DEMA'){
         this.strategyInfo= ' For More Information About DEMA Strategy Visit This '
-        this.strategyUrl = 'http://www.investopedia.com/ask/answers/120414/what-are-common-trading-strategies-used-double-exponential-moving-average-dema.asp'
+        this.strategyUrl = 'http://www.investopedia.com/ask/answers/110414/what-are-common-trading-strategies-used-double-exponential-moving-average-dema.asp'
+        this.present = true;
       } else if(strat ==='PPO'){
         this.strategyInfo= ' For More Information About PPO Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/021315/what-common-strategy-traders-implement-when-using-percentage-price-oscillator-ppo.asp'
+        this.present = true;
       } else if(strat ==='RSI'){
         this.strategyInfo= ' For More Information About RSI Strategy Visit This '
-        this.strategyUrl = 'http://www.investopedia.com/ask/answers/012015/how-do-i-use-relative-strength-index-rsi-create-forex-trading-strategy.asp'
+        this.strategyUrl = 'http://www.investopedia.com/ask/answers/011015/how-do-i-use-relative-strength-index-rsi-create-forex-trading-strategy.asp'
+        this.present = true;
       } else if(strat ==='StochRSI'){
         this.strategyInfo= ' For More Information About StochRSI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031315/how-do-i-build-profitable-strategy-when-spotting-stochrsi-pattern.asp'
+        this.present = true;
       } else if(strat ==='TSI'){
-        this.strategyInfo= ' For More Information About TSI Strategy Visit This'
+        this.strategyInfo= ' For More Information About TSI Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/how-are-true-strength-index-tsi-patterns-interpreted-analysts-and-traders.asp'
+        this.present = true;
       } else if(strat ==='UO'){
         this.strategyInfo= ' For More Information About UO Strategy Visit This '
         this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
-      } else if(strat ==='UO'){
-        this.strategyInfo= ' For More Information About UO Strategy Visit This '
-        this.strategyUrl = 'http://www.investopedia.com/ask/answers/031215/what-common-strategy-traders-implement-when-using-ultimate-oscillator.asp'
+        this.present = true;
       } else if(strat ==='custom'){
         this.strategyInfo= ' For More Information About Custom Strategies Visit This '
         this.strategyUrl = '#/customstrategyexplanation/customstrategyexplanation'
+        this.present = true;
       } else{
-        this.strategyInfo= ' There is Currently No Support Information This'
+        this.strategyInfo= ' There is Currently No Support Information For This Strategy '
         this.strategyUrl = 'javascript:void(0);'
+        this.present = false;
       }
+
+
+     
+
+      
 
       //listens when user changes strategy
       strat = _.find(this.strategies, { name: strat });
 
-    //this might be the strategies we edit. he makes a copy that he creates the config with
-    //this changes the input when a user selects a different strategy
+   
+      //this might be the strategies we edit. he makes a copy that he creates the config with
+      //this changes the input when a user selects a different strategy
 
-      // this.rawStratParams = toml.parse(start.params);
-      this.rawStratParams = strat.params;
+      //NOT ORIGINAL
+      this.rawStratParams = toml.parse(strat.params);
+
+      
+      
+      //ORIGINAL
+      // this.rawStratParams = strat.params;
+     
+      //NOT ORIGINIAL
+      this.stratParams = this.rawStratParams;
 
 
-      // this.stratParams = this.rawStratParams;
       this.emptyStrat = strat.empty;
 
 
       this.emitConfig();
 
-    
- 
-
-
+      
+  
     },
     candleSize: function() { this.emitConfig() },
     historySize: function() { this.emitConfig() },
@@ -226,6 +1511,7 @@ export default {
   },
   computed: {
 
+  
     candleSize: function() {
        if(this.candleSizeUnit === 'minutes')
         return this.rawCandleSize;
@@ -260,12 +1546,17 @@ export default {
   },
   methods: {
     humanizeDuration: (n) => window.humanizeDuration(n),
+
+    
+
     emitConfig: function() {
+
+      //calls the parseParams function to put data in JSON format to send to parent which I believe is new.js. 
+      //So final form of data is JSON
       this.parseParams();
 
 
-      //calls the config function to put data in JSON format to send to parent which I believe is new.js. 
-      //So final form of data is JSON
+      //calls the config function to set the configuration
       this.$emit('stratConfig', this.config);
     },
     parseParams: function() {
@@ -274,9 +1565,33 @@ export default {
     // paraseParams function: this function should take values and put them into stratParams
     // ********
       try {
-        // alert(this.rawStratParams);
+        
+       
+        // NOT ORIGINAL
+        //updates stratParams with edited parameters
+        this.stratParams = this.rawStratParams;
+
+        //NOT ORIGINAL
+        //UPDATING VALUES IN STRATEGIES PARAMETERS FROM USER DROP DOWNS
+        
+        this.stratParams.tradeFactors = this.tradeFactors;
+
+        this.stratParams.buyIfPrice = this.buyIfPrice;
+        this.stratParams.sellIfPrice = this.sellIfPrice;
+        this.stratParams.buyIfVol = this.buyIfVol;
+        this.stratParams.sellIfVol = this.sellIfVol
+        this.stratParams.priceType = this.priceType;
+        this.stratParams.changeType = this.changeType;
+        this.stratParams.Protection = this.price_Protect;
+        this.stratParams.buyImmediately = this.Buy_Imm;
+        
+
+
+      //  alert(this.stratParams.buyImmediately);
+      
+        // ORIGINAL
         //parse raw parameters back to strats
-        this.stratParams = toml.parse(this.rawStratParams);
+        // this.stratParams = toml.parse(this.rawStratParams);
         this.rawStratParamsError = false;
       } catch(e) {
         this.rawStratParamsError = e;
@@ -382,9 +1697,11 @@ export default {
 
 
 .strategy_header{
-  font-size: 1rem;
+  
   text-transform: uppercase;
 }
+
+
 
 
 #parameterDiv{
@@ -402,4 +1719,19 @@ export default {
     margin-left:30%;
 }
 
+
+.tooltip_font{
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+
+.font_weight{
+  font-weight: 100;
+}
+
+.center_box {
+    margin: auto;
+  
+}
 </style>

@@ -10,7 +10,7 @@ buyPricePersistenceThreshold = 3
 sellPricePersistenceThreshold = 2
 buyVolPersistenceThreshold = 3
 sellVolPersistenceThreshold = 2
-priceProtection = 'disabled'
+Protection = 'disabled'
 nextActionBuy = 'yes'
 nextActionSell = 'no'
 
