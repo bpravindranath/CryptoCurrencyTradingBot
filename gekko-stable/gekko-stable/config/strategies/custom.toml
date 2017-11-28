@@ -1,6 +1,6 @@
 buyImmediately = 'no'
 tradeFactors = 'price'
-priceType = 'open/close'
+priceType = 'open'
 buyIfPrice = 'decrease'
 sellIfPrice = 'increase'
 buyIfVol = 'decrease'
