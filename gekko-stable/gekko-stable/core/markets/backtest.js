@@ -13,7 +13,7 @@ var to = moment.utc(daterange.to);
 var from = moment.utc(daterange.from);
 
 if(to <= from)
-  util.die('This daterange does not make sense.')
+  util.die('This date range does not make sense.')
 
 if(!from.isValid())
   util.die('invalid `from`');

@@ -12,9 +12,9 @@
 
   #### Looking for more information? Start here.
   <hr>
-  <p style='font-size: 20px;font-weight: bold;'>About Gekko &amp; Gekko TU</p>
-    <p style ='color:#e2e504; font-style:italic;'> What's the difference between Gekko and Gekko TU?</p>
-    <p style='color: #ffffff'> Gekko TU is an extension of the original Gekko project. Gekko TU's goals are to provide a more user-friendly interface and the ability to configure custom trade strategies from the web interface. Perfect for new traders. Get more details at the links below.</p>
+  <p style='font-size: 20px;font-weight: bold;'>About Gekko &amp; GekkoTU</p>
+    <p style ='color:#e2e504; font-style:italic;'> What's the difference between Gekko and GekkoTU?</p>
+    <p style='color: #ffffff'> GekkoTU is an extension of the original Gekko project. GekkoTU's goals are to provide a more user-friendly interface and the ability to configure custom trade strategies from the web interface, making it perfect for new traders. Get more details at the links below.</p>
 
     <ul>
      <li><a href='https://gekko.wizb.it/'>The original Gekko's website.</a></li>

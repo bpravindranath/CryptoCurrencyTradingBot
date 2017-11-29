@@ -1,19 +1,23 @@
 <template lang='jade'>
-  div.center.contain.my2
-    div.center
-       h3 Import data
-       p The importer can download historical market data directly from the exchange.
-    .hr
-    h3 Currently running imports
-    p(v-if='imports.length === 0') You currently don't have any imports running.
-    ul(v-if='imports.length')
-      li(v-for='_import in imports')
+.reduced-margin
+  div
+    br
+    h3.contain.center Import Data
+      p The importer can download historical market data directly from the exchange.
+    br
+    hr(width='70%')
+    h3.contain.center Currently Running Imports
+      p(v-if='imports.length === 0') You currently don't have any imports running.
+      ul(v-if='imports.length')
+        li(v-for='_import in imports')
         router-link(:to='"/data/importer/import/" + _import.id') {{ _import.watch.exchange }}:{{ _import.watch.currency }}/{{ _import.watch.asset }}
-        
-    .hr
-    h3 Start a new import
-    import-config-builder(v-on:config='updateConfig')
-    .hr
+    br
+    hr(width='70%')
+    h3.contain.center Start a New Import
+      p
+        import-config-builder(v-on:config='updateConfig')
+    br
+    hr(width='70%')
     .txt--center
       a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='run') Import
 </template>
@@ -28,7 +32,7 @@ import marked from '../../../tools/marked'
 
 let intro = marked(`
 
-## Import data
+## Import Data
 
 The importer can download historical market data directly from the exchange.
 
@@ -82,4 +86,7 @@ export default {
 </script>
 
 <style>
+.reduced-margin{
+    margin-left: -30%;
+}
 </style>

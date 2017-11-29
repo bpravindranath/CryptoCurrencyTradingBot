@@ -18,12 +18,12 @@
             option(v-for='strat in strategies') {{ strat.name }}
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
         span(v-if="present")
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Website
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Web Page
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
           img(src='/assets/question_yellow.jpeg', width='10', height='10')
-          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. Gekko will update its data on every interval.
+          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. GekkoTU will update its data on every interval.
             
         .grd-row
           .grd-row-col-3-6

@@ -1,7 +1,7 @@
 <template lang='jade'>
 .grd
   .px1
-    h3.center2 Paper trader
+    h3.center2 Paper Trader
     em(v-if='toggle === "closed"')
       div.sub-header-text
         a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings

@@ -3,6 +3,7 @@ var config = require('../core/util.js').getConfig();
 var watchConfig = config.watch;
 var settings = config.custom;
 var async = require('async');
+var modeset = require('../core/util.js').gekkoMode();
 
 //Defining a custom strategy.
 var strat = {};
@@ -221,13 +222,31 @@ strat.update = function(candle) {
 
 // For debugging purposes and record keeping. Logs can be found in the logs folder. Select the paperTrader log with the timestamp equal to your paperTrader start time.
 strat.log = function() {
-    log.debug('--------CANDLE--------');
-    log.debug('------Price Information------');    
-    log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
-    log.debug('Change in Price: $', this.settings.changeinPriceAmt.toFixed(8), ' (',this.settings.changeinPricePer.toFixed(8),'%)');
-    log.debug('------Trade Volume Information------');    
-    log.debug('This Candle\'s Trade Volume: ', this.candle.volume.toFixed(8), ' Previous Trade Volume: ', this.settings.prevVoltoPrint.toFixed(8));    
-    log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt.toFixed(8), ' (', this.settings.changeinTradeVolPer.toFixed(8), '%)' );     
+    if(modeset !== 'backtest'){
+        log.debug('--------CANDLE--------');
+        log.debug('------Price Information------');    
+        log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
+        log.debug('Change in Price: $', this.settings.changeinPriceAmt.toFixed(8), ' (',this.settings.changeinPricePer.toFixed(8),'%)');
+        log.debug('------Trade Volume Information------');    
+        log.debug('This Candle\'s Trade Volume: ', this.candle.volume.toFixed(8), ' Previous Trade Volume: ', this.settings.prevVoltoPrint.toFixed(8));    
+        log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt.toFixed(8), ' (', this.settings.changeinTradeVolPer.toFixed(8), '%)' );     
+    }
+    if(modeset == 'backtest'){
+        log.debug('--------CANDLE--------');
+        log.debug('------Price Information------');    
+        log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
+        log.debug('Change in Price: $', this.settings.changeinPriceAmt, ' (',this.settings.changeinPricePer,'%)');
+        log.debug('------Trade Volume Information------');    
+        log.debug('This Candle\'s Trade Volume: ', this.candle.volume, ' Previous Trade Volume: ', this.settings.prevVoltoPrint);    
+        log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt, ' (', this.settings.changeinTradeVolPer, '%)' );  
+    }
+//    log.debug('--------CANDLE--------');
+//    log.debug('------Price Information------');    
+//    log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
+//    log.debug('Change in Price: $', this.settings.changeinPriceAmt.toFixed(8), ' (',this.settings.changeinPricePer.toFixed(8),'%)');
+//    log.debug('------Trade Volume Information------');    
+//    log.debug('This Candle\'s Trade Volume: ', this.candle.volume.toFixed(8), ' Previous Trade Volume: ', this.settings.prevVoltoPrint.toFixed(8));    
+//    log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt.toFixed(8), ' (', this.settings.changeinTradeVolPer.toFixed(8), '%)' );     
 } // end log
 
 // Based on the newly calculated information, check if we should make a purchase or sale.
