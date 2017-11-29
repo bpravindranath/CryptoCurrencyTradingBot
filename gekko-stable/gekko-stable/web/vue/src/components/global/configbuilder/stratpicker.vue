@@ -669,7 +669,7 @@
                   hr(width='70%')
                   span Bacon ipsum dolor amet corned beef prosciutto capicola
               .custom-select.button
-                select(v-model='tradeFactors')
+                select(v-model='rawStratParams.tradeFactors')
                   option(disabled='', value='') Please select one
                   option price
                   option volume
@@ -677,7 +677,7 @@
                   option thresholds
                     
               
-        span(v-if="tradeFactors === 'price and volume'")
+        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy If There's a Price
@@ -687,7 +687,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='buyIfPrice')
+                  select(v-model='rawStratParams.buyIfPrice')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
@@ -700,7 +700,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='sellIfPrice')
+                  select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
@@ -714,7 +714,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='buyIfVol')
+                  select(v-model='rawStratParams.buyIfVol')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
@@ -727,12 +727,12 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='sellIfVol')
+                  select(v-model='rawStratParams.sellIfVol')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
       
-        span(v-if="tradeFactors === 'price'")
+        span(v-if="rawStratParams.tradeFactors === 'price'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy If There's a Price
@@ -742,7 +742,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='buyIfPrice')
+                  select(v-model='rawStratParams.buyIfPrice')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
@@ -755,12 +755,12 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='sellIfPrice')
+                  select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
 
-        span(v-if="tradeFactors === 'volume'")
+        span(v-if="rawStratParams.tradeFactors === 'volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy If There's a Trade Volume
@@ -770,7 +770,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='buyIfVol')
+                  select(v-model='rawStratParams.buyIfVol')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
@@ -785,12 +785,12 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='sellIfVol')
+                  select(v-model='rawStratParams.sellIfVol')
                     option(disabled='', value='') Please select one
                     option increase
                     option decrease
 
-        span(v-if="tradeFactors === 'thresholds'")
+        span(v-if="rawStratParams.tradeFactors === 'thresholds'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Price Type
@@ -800,10 +800,10 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='priceType')
+                  select(v-model='rawStratParams.priceType')
                     option(disabled='', value='') Please select one
-                    option Open
-                    option Close
+                    option open
+                    option close
 
           .grd-row
             .grd-row-col-2-6.mx1.center_box
@@ -832,7 +832,7 @@
         //--------------------------------------- CHANGE TYPE PARAMETER  # | % ----------------------------------     
         
         
-        span(v-if="tradeFactors !== 'thresholds'")
+        span(v-if="rawStratParams.tradeFactors !== 'thresholds'")
           hr(width='70%')
           .grd-row
             .grd-row-col-2-6.mx1.center_box
@@ -843,123 +843,123 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 .custom-select.button
-                  select(v-model='changeType')
+                  select(v-model='rawStratParams.changeType')
                     option(disabled='', value='') Please select one
                     option #
                     option %
           
         //-----------------------------------SECTION INTRODUCTION-----------------------------------
         //- User Will Choose either '#'' or '%'.
-        //- Now depending on above input from TradeFactor(Price, Volume, Price and Volume or Threshold) and BuyIfPrice/Vol (increase, decrease) and SellIfPrice/Vol (increase)
+        //- Now depending on above input from TradeFactor(Price, Volume, Price and Volume or Threshold) and BuyIfPrice/Vol (increase, decrease) and rawStratParams.sellIfPrice/Vol (increase)
         //- Different parameters will appear according to a combination of options
         
         
         //- Example:
-        //- if (changeType === '#' &&  tradeFactors === 'Price' 
-        //-     && buyIfPrice ==='increase' $$ sellIfPrice ==='decrease')
+        //- if (rawStratParams.changeType === '#' &&  rawStratParams.tradeFactors === 'Price' 
+        //-     && rawStratParams.buyIfPrice ==='increase' $$ rawStratParams.sellIfPrice ==='decrease')
         //- then 
         //-    1)User sets price to Buy where there is a price increase
                2)User sets price to sell where there is a price decrease 
         
         
         //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
-        span(v-if="changeType === '#'")
+        span(v-if="rawStratParams.changeType === '#'")
           .grd-row
            
             //--------------------------------------- FIRST INPUT BOX ---------------------------------- 
             .grd-row-col-2-6.mx1.center_box
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
-              span(v-if="tradeFactors === 'price'")
+              span(v-if="rawStratParams.tradeFactors === 'price'")
                
                 //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
-                span(v-if="buyIfPrice ==='decrease'")
+                span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                     
                 //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
-                span(v-if="buyIfPrice ==='increase'")
+                span(v-if="rawStratParams.buyIfPrice ==='increase'")
                   h6.font_weight Buy If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt')
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'volume'")
+              span(v-if="rawStratParams.tradeFactors === 'volume'")
                 
-                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
-                span(v-if="buyIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.buyIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='decrease'")
                   h6.font_weight Buy If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
-                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
-                span(v-if="buyIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='increase'")
                   h6.font_weight Buy If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'price and volume'")
-                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
-                span(v-if="buyIfPrice ==='decrease'")
+              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+                //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
-                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
-                span(v-if="buyIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='increase'")
                   h6.font_weight Buy If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                
                 
-                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
-                span(v-if="buyIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.buyIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='decrease'")
                   h6.font_weight Buy If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
-                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
-                span(v-if="buyIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='increase'")
                   h6.font_weight Buy If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
             
@@ -968,291 +968,291 @@
             .grd-row-col-2-6.mx1.center_box
              
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
-              span(v-if="tradeFactors === 'price'")
+              span(v-if="rawStratParams.tradeFactors === 'price'")
               
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfPrice ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='decrease'")
                   h6.font_weight Sell If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='increase'")
                   h6.font_weight Sell If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'volume'")
+              span(v-if="rawStratParams.tradeFactors === 'volume'")
                 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='decrease'")
                   h6.font_weight Sell If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='increase'")
                   h6.font_weight Sell If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
                 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfPrice ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='decrease'")
                   h6.font_weight Sell If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='increase'")
                   h6.font_weight Sell If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfVol ==='decrease'")
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
+                //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='decrease'")
                   h6.font_weight Sell If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='increase'")
                   h6.font_weight Sell If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDncreaseAmt') 
               
         //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
-        span(v-if="changeType === '%'")
+        span(v-if="rawStratParams.changeType === '%'")
           .grd-row
            
             //--------------------------------------- FIRST INPUT BOX ---------------------------------- 
             .grd-row-col-2-6.mx1.center_box
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
-              span(v-if="tradeFactors === 'price'")
+              span(v-if="rawStratParams.tradeFactors === 'price'")
                
-                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
-                span(v-if="buyIfPrice ==='decrease'")
+                //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
-                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
-                span(v-if="buyIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='increase'")
                   h6.font_weight Buy If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt')
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'volume'")
+              span(v-if="rawStratParams.tradeFactors === 'volume'")
                 
-                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
-                span(v-if="buyIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.buyIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='decrease'")
                   h6.font_weight Buy If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
-                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
-                span(v-if="buyIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='increase'")
                   h6.font_weight Buy If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'price and volume'")
-                //--------------------------------------- BuyIfPrice === decrease ---------------------------------- 
-                span(v-if="buyIfPrice ==='decrease'")
+              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+                //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
-                //--------------------------------------- BuyIfPrice === increase ---------------------------------- 
-                span(v-if="buyIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfPrice ==='increase'")
                   h6.font_weight Buy If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                
                 
-                //--------------------------------------- BuyIfVol === decrease ---------------------------------- 
-                span(v-if="buyIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.buyIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='decrease'")
                   h6.font_weight Buy If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
-                //--------------------------------------- BuyIfVol === increase ---------------------------------- 
-                span(v-if="buyIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.buyIfVol ==='increase'")
                   h6.font_weight Buy If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt')
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
             
             
             //--------------------------------------- Second INPUT BOX ---------------------------------- 
             .grd-row-col-2-6.mx1.center_box
              
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price' ---------------------------------- 
-              span(v-if="tradeFactors === 'price'")
+              span(v-if="rawStratParams.tradeFactors === 'price'")
               
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfPrice ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='decrease'")
                   h6.font_weight Sell If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='increase'")
                   h6.font_weight Sell If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'volume'")
+              span(v-if="rawStratParams.tradeFactors === 'volume'")
                 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfVol ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='decrease'")
                   h6.font_weight Sell If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='increase'")
                   h6.font_weight Sell If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
                 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfPrice ==='decrease'")
+                //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='decrease'")
                   h6.font_weight Sell If There's a Price decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.pricedecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt', placeholder="edit me") 
                
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfPrice ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfPrice ==='increase'")
                   h6.font_weight Sell If There's a Price increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.priceincreaseAmt') 
-                //--------------------------------------- SellIfPrice === decrease ---------------------------------- 
-                span(v-if="sellIfVol ==='decrease'")
+                    input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
+                //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='decrease'")
                   h6.font_weight Sell If There's a Volume decrease
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVoldecreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
-                //--------------------------------------- SellIfPrice === increase ---------------------------------- 
-                span(v-if="sellIfVol ==='increase'")
+                //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
+                span(v-if="rawStratParams.sellIfVol ==='increase'")
                   h6.font_weight Sell If There's a Volume increase
                     .tooltip
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolincreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
 
 
         //--------------------------------------- PRICE/VOLUME PERSISTENCE THRESHOLD   ----------------------------------       
         
         
         //--------------------------------------- CHANGETYPE PARAMETER  === #  ---------------------------------- 
-        span(v-if="tradeFactors === 'price'")
+        span(v-if="rawStratParams.tradeFactors === 'price'")
           hr(width='70%')
           .grd-row
             .grd-row-col-2-6.mx1.center_box
@@ -1274,7 +1274,7 @@
                 input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
         
 
-        span(v-if="tradeFactors === 'volume'")
+        span(v-if="rawStratParams.tradeFactors === 'volume'")
           hr(width='70%')
           .grd-row
             .grd-row-col-2-6.mx1.center_box
@@ -1298,7 +1298,7 @@
         
 
 
-        span(v-if="tradeFactors != 'thresholds'")
+        span(v-if="rawStratParams.tradeFactors != 'thresholds'")
           hr(width='70%')
           .grd-row
             .grd-row-col-2-6.mx1.center_box
@@ -1310,7 +1310,7 @@
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                   //- input.Inputcolor(v-model='rawStratParams.Protection')
                 .custom-select.button
-                  select(v-model='price_Protect')
+                  select(v-model='rawStratParams.Protection')
                     option(disabled='', value='') Please select one
                     option disabled
                     option enabled 
@@ -1324,7 +1324,7 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
               .custom-select.button
-                select(v-model='Buy_Imm')
+                select(v-model='rawStratParams.buyImmediately')
                   option(disabled='', value='') Please select one
                   option yes
                   option no
@@ -1352,7 +1352,7 @@ export default {
       candleSizeUnit: 'hours',
       rawCandleSize: 1,
 
-      strategy: 'custom',
+      strategy: 'MACD',
       historySize: 10,
 
       rawStratParams: '',
@@ -1365,15 +1365,13 @@ export default {
       strategyUrl: 'http://traderhq.com/ultimate-guide-to-the-macd-indicator/',
 
       present: true,
-      tradeFactors: '',
-      buyIfPrice: '',
-      sellIfPrice: '',
-      buyIfVol: '',
-      sellIfVol: '',
-      priceType: '',
-      changeType: '',
-      price_Protect: '',
-      Buy_Imm: ''
+   
+      
+
+     
+    
+   
+     
 
     };
   },components: {
@@ -1428,7 +1426,7 @@ export default {
      // *********
     // watch function: this function watches when user changes strategies and parameter data
     // ********
-    strategy: function(strat, tradeFactors) {
+    strategy: function(strat) {
          
      
       if (strat === 'MACD'){
@@ -1574,16 +1572,6 @@ export default {
         //NOT ORIGINAL
         //UPDATING VALUES IN STRATEGIES PARAMETERS FROM USER DROP DOWNS
         
-        this.stratParams.tradeFactors = this.tradeFactors;
-
-        this.stratParams.buyIfPrice = this.buyIfPrice;
-        this.stratParams.sellIfPrice = this.sellIfPrice;
-        this.stratParams.buyIfVol = this.buyIfVol;
-        this.stratParams.sellIfVol = this.sellIfVol
-        this.stratParams.priceType = this.priceType;
-        this.stratParams.changeType = this.changeType;
-        this.stratParams.Protection = this.price_Protect;
-        this.stratParams.buyImmediately = this.Buy_Imm;
         
 
 
