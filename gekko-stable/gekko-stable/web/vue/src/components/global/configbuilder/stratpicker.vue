@@ -44,7 +44,7 @@
          h3.center5 Parameters
           .tooltip
             img(src='/assets/question_yellow.jpeg', width='20', height='20')
-            span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
+            span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique parameters you can customize.
       hr
       div
         span.h5 {{ strategy }} 
@@ -1342,6 +1342,7 @@
 
 import _ from 'lodash'
 import { get } from '../../../tools/ajax'
+ var json2toml = require('json2toml'); //
 
 
 export default {
@@ -1419,6 +1420,8 @@ export default {
 
         //ORIGINAL
         //calls function that will load data from rawStratParams into config
+     //   var stratParamsConvert = this.rawStratParams; //
+       // this.rawStratParams = json2toml({stratParamsConvert}); //
         this.emitConfig();
     });
   },
