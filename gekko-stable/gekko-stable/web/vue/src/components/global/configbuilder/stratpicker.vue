@@ -673,7 +673,7 @@
                   option(disabled='', value='') Please select one
                   option price
                   option volume
-                  option price and volume
+                  option price&volume
                   option thresholds
 
         span(v-if="rawStratParams.tradeFactors === 'price'")
@@ -692,7 +692,7 @@
                     option high
                     option low
 
-        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+        span(v-if="rawStratParams.tradeFactors === 'price&volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Price Type
@@ -709,7 +709,7 @@
                     option low
             
               
-        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+        span(v-if="rawStratParams.tradeFactors === 'price&volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy If There's a Price
@@ -936,7 +936,7 @@
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
@@ -1032,7 +1032,7 @@
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 
                 //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfPrice ==='decrease'")
@@ -1073,7 +1073,7 @@
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDncreaseAmt') 
               
-        //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
+        //--------------------------------------- CHANGE TYPE PARAMETER  === # Should this be %? ---------------------------------- 
         span(v-if="rawStratParams.changeType === '%'")
           .grd-row
            
@@ -1129,7 +1129,7 @@
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
@@ -1223,7 +1223,7 @@
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 
                 //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfPrice ==='decrease'")
