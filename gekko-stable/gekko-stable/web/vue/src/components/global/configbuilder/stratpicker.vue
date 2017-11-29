@@ -675,7 +675,39 @@
                   option volume
                   option price and volume
                   option thresholds
-                    
+
+        span(v-if="rawStratParams.tradeFactors === 'price'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Price Type
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font PRICE TYPE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='rawStratParams.priceType')
+                    option(disabled='', value='') Please select one
+                    option open/close
+                    option high
+                    option low
+
+        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Price Type
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font PRICE TYPE
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                .custom-select.button
+                  select(v-model='rawStratParams.priceType')
+                    option(disabled='', value='') Please select one
+                    option open/close
+                    option high
+                    option low
+            
               
         span(v-if="rawStratParams.tradeFactors === 'price and volume'")
           .grd-row
@@ -775,7 +807,6 @@
                     option increase
                     option decrease
                   
-            h6.font_weight AND
 
             .grd-row-col-2-6.mx1.center_box  
               h6.font_weight Sell If There's a Trade Volume
@@ -791,20 +822,6 @@
                     option decrease
 
         span(v-if="rawStratParams.tradeFactors === 'thresholds'")
-          .grd-row
-            .grd-row-col-2-6.mx1.center_box
-              h6.font_weight Price Type
-                .tooltip
-                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
-                  h3.tooltiptext.tooltip_font PRICE TYPE
-                    hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
-                .custom-select.button
-                  select(v-model='rawStratParams.priceType')
-                    option(disabled='', value='') Please select one
-                    option open
-                    option close
-
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy Price Threshold
@@ -1399,10 +1416,17 @@ export default {
 
       // returns a list of parameters for MACD strategy which is the given initial value
 
+
+        try {
         //NOT ORIGINAL
         //Option 1: parse the TOML into JSON
         this.rawStratParams = toml.parse(_.find(this.strategies, { name: this.strategy }).params);
       //  alert(this.rawStratParams.short);
+       
+        }
+        catch(e){
+         alert("error");
+        }
        //ORIGINAL
        //Option 2: does not parse TOML into JSON
         // this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
@@ -1476,18 +1500,23 @@ export default {
 
       
 
-      //listens when user changes strategy
+      //listens when user changes strategy toml format
       strat = _.find(this.strategies, { name: strat });
 
    
       //this might be the strategies we edit. he makes a copy that he creates the config with
       //this changes the input when a user selects a different strategy
+  
+    
 
+
+    try{
       //NOT ORIGINAL
       this.rawStratParams = toml.parse(strat.params);
-
       
-      
+    }catch(e){
+         alert("error");
+    }
       //ORIGINAL
       // this.rawStratParams = strat.params;
      
@@ -1536,6 +1565,7 @@ export default {
       if(this.emptyStrat)
         config[this.strategy] = {__empty: true}
       else
+
         config[this.strategy] = this.stratParams;
         //puts json strategies into config
 
@@ -1572,9 +1602,6 @@ export default {
         //NOT ORIGINAL
         //UPDATING VALUES IN STRATEGIES PARAMETERS FROM USER DROP DOWNS
         
-        
-
-
       //  alert(this.stratParams.buyImmediately);
       
         // ORIGINAL
