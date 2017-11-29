@@ -1418,17 +1418,18 @@ export default {
 
 
         try {
+
         //NOT ORIGINAL
         //Option 1: parse the TOML into JSON
         this.rawStratParams = toml.parse(_.find(this.strategies, { name: this.strategy }).params);
-      //  alert(this.rawStratParams.short);
-       
+        //  alert(this.rawStratParams.short);
+
         }
         catch(e){
          alert("error");
         }
-       //ORIGINAL
-       //Option 2: does not parse TOML into JSON
+        
+        //ORIGINAL //Option 2: does not parse TOML into JSON
         // this.rawStratParams = _.find(this.strategies, { name: this.strategy }).params;
 
 
