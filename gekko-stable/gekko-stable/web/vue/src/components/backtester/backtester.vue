@@ -1,7 +1,7 @@
 <template lang='jade'>
 .reduced-margin
   div
-    h2.contain.center Backtest
+    h2.contain.center Backtests
     hr.contain
     config-builder(v-on:config='check')
     div(v-if='backtestable')

@@ -1,6 +1,6 @@
 <template lang='jade'>
 div
-  h3.center Select a dataset
+  h3.center Select a Dataset
   .txt--center.my2(v-if='datasetScanstate === "idle"')
     a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
   .txt--center.my2(v-if='datasetScanstate === "scanning"')

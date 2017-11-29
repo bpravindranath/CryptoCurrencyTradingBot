@@ -28,7 +28,7 @@ module.exports = function(done) {
 
     if(_.size(ranges) === 1) {
       var r = _.first(ranges);
-      log.info('Gekko was able to find a single daterange in the locally stored history:');
+      log.info('Gekko was able to find a single date range in the locally stored history:');
       log.info('\t', 'from:', moment.unix(r.from).utc().format('YYYY-MM-DD HH:mm:ss'));
       log.info('\t', 'to:', moment.unix(r.to).utc().format('YYYY-MM-DD HH:mm:ss'));
 
@@ -38,8 +38,8 @@ module.exports = function(done) {
     }
 
     log.info(
-      'Gekko detected multiple dateranges in the locally stored history.',
-      'Please pick the daterange you are interested in testing:'
+      'Gekko detected multiple date ranges in the locally stored history.',
+      'Please pick the date range you are interested in testing:'
     );
 
     _.each(ranges, (range, i) => {
@@ -52,12 +52,12 @@ module.exports = function(done) {
 
       var option = parseInt(result.option);
       if(option === NaN)
-        util.die('Not an option..', true);
+        util.die('Not an option.', true);
 
       var range = ranges[option - 1];
 
       if(!range)
-        util.die('Not an option..', true);
+        util.die('Not an option.', true);
 
       setDateRange(range.from, range.to);
       return done();

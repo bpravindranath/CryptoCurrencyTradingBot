@@ -18,12 +18,12 @@
             option(v-for='strat in strategies') {{ strat.name }}
         span.exchange_Info(for='strategyInfo') {{strategyInfo}}
         span(v-if="present")
-          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Website
+          a.exchange_Info(v-bind:href="strategyUrl",target="_blank", style="font-size: 0.9rem" ) Web Page
       div
         label.exchange_align2(for='candleSize').strategy_header Candle Size
         .tooltip2
           img(src='/assets/question_yellow.jpeg', width='10', height='10')
-          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. Gekko will update its data on every interval.
+          span.tooltiptext2 A candle is a time interval for which you can measure open price, close price, high price, and trade volume, etc. GekkoTU will update its data on every interval.
             
         .grd-row
           .grd-row-col-3-6
@@ -44,7 +44,7 @@
          h3.center5 Parameters
           .tooltip
             img(src='/assets/question_yellow.jpeg', width='20', height='20')
-            span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique paramters you can customize.
+            span.tooltiptext Parameters are the variables used in a strategy. Each strategy has unique parameters you can customize.
       hr
       div
         span.h5 {{ strategy }} 
@@ -673,7 +673,7 @@
                   option(disabled='', value='') Please select one
                   option price
                   option volume
-                  option price and volume
+                  option price&volume
                   option thresholds
 
         span(v-if="rawStratParams.tradeFactors === 'price'")
@@ -692,7 +692,7 @@
                     option high
                     option low
 
-        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+        span(v-if="rawStratParams.tradeFactors === 'price&volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Price Type
@@ -709,7 +709,7 @@
                     option low
             
               
-        span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+        span(v-if="rawStratParams.tradeFactors === 'price&volume'")
           .grd-row
             .grd-row-col-2-6.mx1.center_box
               h6.font_weight Buy If There's a Price
@@ -936,7 +936,7 @@
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
@@ -1032,7 +1032,7 @@
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 
                 //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfPrice ==='decrease'")
@@ -1073,7 +1073,7 @@
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDncreaseAmt') 
               
-        //--------------------------------------- CHANGE TYPE PARAMETER  === #  ---------------------------------- 
+        //--------------------------------------- CHANGE TYPE PARAMETER  === # Should this be %? ---------------------------------- 
         span(v-if="rawStratParams.changeType === '%'")
           .grd-row
            
@@ -1129,7 +1129,7 @@
 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 //--------------------------------------- rawStratParams.buyIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.buyIfPrice ==='decrease'")
                   h6.font_weight Buy If There's a Price decrease
@@ -1223,7 +1223,7 @@
               
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Price and Volume' ---------------------------------- 
-              span(v-if="rawStratParams.tradeFactors === 'price and volume'")
+              span(v-if="rawStratParams.tradeFactors === 'price&volume'")
                 
                 //--------------------------------------- rawStratParams.sellIfPrice === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfPrice ==='decrease'")
@@ -1359,6 +1359,7 @@
 
 import _ from 'lodash'
 import { get } from '../../../tools/ajax'
+ var json2toml = require('json2toml'); //
 
 
 export default {
@@ -1444,6 +1445,8 @@ export default {
 
         //ORIGINAL
         //calls function that will load data from rawStratParams into config
+     //   var stratParamsConvert = this.rawStratParams; //
+       // this.rawStratParams = json2toml({stratParamsConvert}); //
         this.emitConfig();
     });
   },

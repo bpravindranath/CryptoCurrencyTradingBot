@@ -11,7 +11,7 @@
         h3.center2 API Config Setup
           .tooltip2
             img(src='/assets/question_yellow.jpeg', width='20', height='20')
-            span.tooltiptext2 An application programming interface key (API key) is a code passed in by Gekko calling an API of a specific trading exchange to identify the user. This will allow the user to make real trades on this exhange.
+            span.tooltiptext2 An application programming interface key (API key) is a code passed in by GekkoTU calling an API of a specific trading exchange to identify the user. This will allow the user to make real trades on this exhange.
         hr
         div.center2
 
