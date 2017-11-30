@@ -69,7 +69,7 @@ export default {
 }
 
 .roundtrips table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+  background-color: #636b73;
 }
 
 </style>

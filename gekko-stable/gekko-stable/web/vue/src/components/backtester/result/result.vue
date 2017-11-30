@@ -1,12 +1,12 @@
 <template lang='jade'>
   div
-    .hr.contain
+    hr.contain
     div.contain
       h3 Backtest result
     result-summary(:report='result.report')
-    .hr.contain
+    hr.contain
     chart(:data='result', height='500')
-    .hr.contain
+    hr.contain
     roundtripTable(:roundtrips='result.roundtrips')
 </template>
 

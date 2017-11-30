@@ -1,13 +1,9 @@
 <template lang='jade'>
-  footer.p2.bg--black
+  footer.p1.bg--black
     .contain.grd-row
-      .grd-row-col-3-6
-        p
-          em Use Gekko and GekkoTU at your own risk.
-        p Using Gekko v{{ version.gekko }} and Gekko UI v{{ version.ui }}.
-      .footerR.px2.grd-row-col
-        a(href='#/backtest/glossary') Glossary
-     
+      .footer-text
+        p 
+          DummyText Using Gekko v{{ version.gekko }} and Gekko UI v{{ version.ui }}. Use Gekko and GekkoTU at your own risk.      
 </template>
 
 <script>
@@ -27,16 +23,8 @@ export default {
 </script>
 
 <style>
-  .footerR a {
-  flex: 1 1 100%;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  }
-
-  .footerR a:hover {
-  text-decoration: underline;
+  .footer-text{
+    color: white;
+    margin: auto;
   }
 </style>
-

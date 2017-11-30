@@ -1,11 +1,13 @@
 <template lang='jade'>
+.reduced-margin
   div.contain.my2
-    h3.center.header_new_gekko START A NEW GEKKO
+    h3.center.header_new_gekko Start A New Trade Bot
     hr
     gekko-config-builder(v-on:config='updateConfig')
     hr
     .txt--center(v-if='config.valid')
-      a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='start') Start
+      a(href='#', v-on:click.prevent='start') 
+          button.button_color Start!
 </template>
 
 <script>

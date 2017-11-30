@@ -1,10 +1,11 @@
 <template lang='jade'>
+ .reduced-margin
   div.my2
     .contain(v-if='!data')
-      h1 Unknown Strat runner
-      p Gekko doesn't know what strat runner this is...
+      h1 Unknown Trade Bot
+      p Gekko doesn't know what trade bot this is...
     div(v-if='data')
-      h2.contain Strat runner
+      h2.contain Trade Bot
       .grd.contain
         .grd-row
           .grd-row-col-3-6
@@ -23,16 +24,16 @@
             spinner(v-if='isLoading')
             template(v-if='!isLoading')
               .grd-row(v-if='data.firstCandle')
-                .grd-row-col-2-6 Watching since
+                .grd-row-col-3-6 Watching Since
                 .grd-row-col-4-6 {{ fmt(data.firstCandle.start) }}
               .grd-row(v-if='data.lastCandle')
-                .grd-row-col-2-6 Received data until
+                .grd-row-col-3-6 Last Data Update
                 .grd-row-col-4-6 {{ fmt(data.lastCandle.start) }}
               .grd-row(v-if='data.lastCandle && data.firstCandle')
-                .grd-row-col-2-6 Data spanning
+                .grd-row-col-3-6 Data Spanning
                 .grd-row-col-4-6 {{ humanizeDuration(moment(data.lastCandle.start).diff(moment(data.firstCandle.start))) }}
               .grd-row(v-if='data.lastCandle && data.firstCandle')
-                .grd-row-col-2-6 Amount of trades
+                .grd-row-col-3-6 Number of Trades
                 .grd-row-col-4-6 {{ data.trades.length }}
         .grd-row
           .grd-row-col-3-6
@@ -42,18 +43,20 @@
               .grd-row-col-3-6
                 strong {{ stratName }}
             | Parameters
-            pre {{ stratParams }}
+            <a href='#' style="font-size:12px" v-on:click="showHide">Show/Hide</a>
+            #parameterDiv
+             pre {{ stratParams }}
           .grd-row-col-3-6
-            h3 Profit report
+            h3 Profit Report
             template(v-if='!report')
               p
                 em Waiting for at least one trade..
             template(v-if='report') 
               .grd-row
-                .grd-row-col-3-6 Start balance
+                .grd-row-col-3-6 Start Balance
                 .grd-row-col-3-6 {{ round(report.startBalance) }}
               .grd-row
-                .grd-row-col-3-6 Current balance
+                .grd-row-col-3-6 Current Balance
                 .grd-row-col-3-6 {{ round(report.balance) }}
               .grd-row
                 .grd-row-col-3-6 Market
@@ -65,11 +68,11 @@
                 .grd-row-col-3-6 Alpha
                 .grd-row-col-3-6 {{ round(report.alpha) }} {{ data.watch.currency }}
         p(v-if='watcher')
-          em This strat runner gets data from 
+          em This trade bot gets data from 
             router-link(:to='"/live-gekkos/watcher/" + watcher.id') this market watcher
           | .
       template(v-if='!isLoading')
-        h3.contain Market graph
+        h3.contain Market Graph
         spinner(v-if='candleFetch === "fetching"')
         template(v-if='candleFetch === "fetched"')
           chart(:data='chartData', :height='300')
@@ -78,17 +81,14 @@
 </template>
 
 <script>
-
 import Vue from 'vue'
 import _ from 'lodash'
-
 import { post } from '../../tools/ajax'
 import spinner from '../global/blockSpinner.vue'
 import chart from '../backtester/result/chartWrapper.vue'
 import roundtrips from '../backtester/result/roundtripTable.vue'
 import paperTradeSummary from '../global/paperTradeSummary.vue'
 // global moment
-
 export default {
   created: function() {
     if(!this.isLoading)
@@ -122,13 +122,11 @@ export default {
     trades: function() {
       if(!this.data)
         return [];
-
       return this.data.trades;
     },
     report: function() {
       if(!this.data)
         return;
-
       return this.data.report;
     },
     stratName: function() {
@@ -138,13 +136,10 @@ export default {
     stratParams: function() {
       if(!this.data)
         return '';
-
       let stratParams = Vue.util.extend({}, this.data.strat.params);
       delete stratParams.__empty;
-
       if(_.isEmpty(stratParams))
         return 'No parameters'
-
       return JSON.stringify(stratParams, null, 4);
     },
     isLoading: function() {
@@ -154,7 +149,6 @@ export default {
         return true;
       if(!_.isObject(this.data.lastCandle))
         return true;
-
       return false;
     },
     watchers: function() {
@@ -172,7 +166,6 @@ export default {
     data: function(val, prev) {
       if(this.isLoading)
         return;
-
       if(this.candleFetch !== 'fetched' )
         this.getCandles();
     }
@@ -184,11 +177,9 @@ export default {
     fmt: mom => moment.utc(mom).format('YYYY-MM-DD HH:mm'),
     getCandles: function() {
       this.candleFetch = 'fetching';
-
       let to = this.data.lastCandle.start;
       let from = this.data.firstCandle.start;
       let candleSize = this.data.strat.tradingAdvisor.candleSize;
-
       let config = {
           watch: this.data.watch,
           daterange: {
@@ -197,22 +188,36 @@ export default {
           // hourly candles
           candleSize
         };
-
       post('getCandles', config, (err, res) => {
         this.candleFetch = 'fetched';
         // todo
         if(!res || res.error || !_.isArray(res))
           console.log(res);
-
         this.candles = res.map(c => {
           c.start = moment.unix(c.start).utc().format();
           return c;
         });
       })
+    },
+  
+  showHide: function(){
+    var x = document.getElementById("parameterDiv");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
     }
+
+    
+  }
   }
 }
+
 </script>
 
 <style>
+
+.reduced-margin{
+    margin-left: -30%;
+}
 </style>

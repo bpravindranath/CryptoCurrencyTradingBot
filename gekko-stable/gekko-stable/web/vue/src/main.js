@@ -9,6 +9,8 @@ import store from './store'
 import backtester from './components/backtester/backtester.vue'
 import home from './components/layout/home.vue'
 import glossary from './components/glossary/glossary.vue'
+import resources from './components/resources/resources.vue'
+import customstrategyexplanation from './components/customstrategyexplanation/customstrategyexplanation.vue'
 
 import data from './components/data/data.vue'
 import importer from './components/data/import/importer.vue'
@@ -31,12 +33,14 @@ const router = new VueRouter({
     { path: '/config', component: config },
     { path: '/data', component: data },
     { path: '/data/importer', component: importer },
-    { path: '/data/importer/import/:id', component: singleImport },
+    // { path: '/data/importer/import/:id', component: singleImport },
     { path: '/live-gekkos', component: gekkoList },
     { path: '/live-gekkos/new', component: newGekko },
     { path: '/live-gekkos/stratrunner/:id', component: singleStratrunner },
     { path: '/live-gekkos/watcher/:id', component: singleWatcher },
-    { path: '/backtest/glossary', component: glossary }
+    { path: '/glossary/glossary', component: glossary },
+    { path: '/resources/resources', component: resources },
+    { path: '/customstrategyexplanation/customstrategyexplanation', component: customstrategyexplanation }      
   ]
 });
 

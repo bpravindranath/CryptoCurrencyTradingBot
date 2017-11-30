@@ -1,17 +1,23 @@
 <template lang='jade'>
-  div.contain.my2
-    div.text(v-html='intro')
-    .hr
-    h3 Currently running imports
-    p(v-if='imports.length === 0') You currently don't have any imports running.
-    ul(v-if='imports.length')
-      li(v-for='_import in imports')
+.reduced-margin
+  div
+    br
+    h3.contain.center Import Data
+      p The importer can download historical market data directly from the exchange.
+    br
+    hr(width='70%')
+    h3.contain.center Currently Running Imports
+      p(v-if='imports.length === 0') You currently don't have any imports running.
+      ul(v-if='imports.length')
+        li(v-for='_import in imports')
         router-link(:to='"/data/importer/import/" + _import.id') {{ _import.watch.exchange }}:{{ _import.watch.currency }}/{{ _import.watch.asset }}
-        
-    .hr
-    h3 Start a new import
-    import-config-builder(v-on:config='updateConfig')
-    .hr
+    br
+    hr(width='70%')
+    h3.contain.center Start a New Import
+      p
+        import-config-builder(v-on:config='updateConfig')
+    br
+    hr(width='70%')
     .txt--center
       a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='run') Import
 </template>
@@ -26,7 +32,7 @@ import marked from '../../../tools/marked'
 
 let intro = marked(`
 
-## Import data
+## Import Data
 
 The importer can download historical market data directly from the exchange.
 
@@ -62,7 +68,7 @@ export default {
       let daysApart = this.daysApart(this.config.importer.daterange);
 
       if(daysApart < 1)
-        return alert('You can only import at least one day of data..')
+        return alert('You must import at least one day of data..')
 
       post('import', this.config, (error, response) => {
         if(error)
@@ -80,4 +86,7 @@ export default {
 </script>
 
 <style>
+.reduced-margin{
+    margin-left: -30%;
+}
 </style>

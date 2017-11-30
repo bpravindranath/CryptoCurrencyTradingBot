@@ -1,34 +1,31 @@
 <template lang='jade'>
-  section.contain.grd-row
-    .grd-row-col-3-6(v-html='left')
-    .px2.grd-row-col-3-6.txt--center
-      a.twitter-timeline(href='https://twitter.com/hashtag/bitcoin', data-widget-id='924709618386919427' height='500') #bitcoin Tweets
-      p Keep up to date on bitcoin via Twitter
+    .reduced-margin
+     .flex-container4(v-html='left')
 </template>
 
 <script>
   import marked from '../../tools/marked';
-
+    
   const left = marked(`
+    ### Welcome to Gekko TU. 
+    #### Let's Get Started.
+    <hr>
+    Gekko TU was built for you. Whether you're an experienced cryptocurrency trader or a novice, we have the tools you need to make smart trading decisions, fast. 
+    
+    Gekko TU is a modified version of [Gekko](https://gekko.wizb.it/). We've redesigned the interface and extended its strategy creation capabilities, making it easier to use and more flexible.
+    Please Note: We strongly recommend doing extensive research before investing in and trading cryptocurrency.
+    
+    Select an option below to begin.
 
-  ## Gekko TU
+    I want to...
 
-  Welcome to Gekko TU, a modified version of [Gekko](https://gekko.wizb.it/) created for the code illiterate and trading bot beginners.
-
-  Please Note: we try to explain and simplify things as much as we can but strongly recommend doing extensive research before live trading.
-
-  #### Lets begin by creating a backtest!
-
-  #### Step 1: Import Data
-  [Import Data page](#/data/importer/)
-
-  <h4>
-      Step 2: Select Dataset
-    <br>Step 3: Choose Strategy
-    <br>Step 4: Modify Paper Trader
-  </h4)>
-  <h5>Click Backtest button to execute</h5>
-  [Backtest page](#/backtest)
+    -[Create a trade bot for simulated or actual trades.](#/live-gekkos)
+    
+    -[Create a market watcher to monitor a market.](#/live-gekkos)
+    
+    -[Import data and backtest a trade strategy.](#/backtest)
+    
+    -[Learn more about cryptocurrency trading.](#/resources/resources)
 
   `);
 
@@ -39,6 +36,13 @@
   }
   }
   }
-
+  
+  
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
+
+<style>
+  .reduced-margin{
+    margin-left: -30%;
+  }
+</style>

@@ -1,9 +1,9 @@
 <template lang='jade'>
 div
-  h3.center3 How Do You Want To Run Gekko?
+  h3.center3 How Do You Want To Run Gekko TU?
     .tooltip2
-          img(src='/assets/Question.jpg', width='20', height='20')
-          span.tooltiptext2 Once you have a strategy you can use Gekko to automatically run it in a few different ways
+          img(src='/assets/question_yellow.jpeg', width='20', height='20')
+          span.tooltiptext2 You can use Gekko TU to simulate the results of a particular trading strategy with the paper trader, monitor markets with the market watcher, or make actual trades with the trade bot. 
   hr
   template
     label(for='type').wrapper
@@ -11,10 +11,11 @@ div
       div.grd-row-col-3-6(v-for='(type, i) in types').m1
         label.radio_header(:for='i') {{ type }}
           .tooltip2
-            img(src='/assets/Question.jpg', width='10', height='10')
+            img(src='/assets/question_yellow.jpeg', width='10', height='10')
             span.tooltiptext2(v-if="type === 'paper trader'"){{paperData}}
             span.tooltiptext2(v-if="type === 'market watcher'") {{marketData}}
-            span.tooltiptext2(v-if="type === 'tradebot'") {{botData}}
+            span.tooltiptext2(v-if="type === 'tradebot'") {{botData}} 
+          
         input.radio_button_margins(type='radio', :value='i', v-model='selectedTypeIndex')
           
                 
@@ -30,9 +31,9 @@ export default {
     return {
       types: ['paper trader', 'market watcher', 'tradebot'],
       selectedTypeIndex: 0,
-      paperData: 'You can run the strategy in realtime simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been.',
-      marketData: 'You can currently watch the market to help inform your trading decisions',
-      botData: 'You can run the strategy in realtime and automatically execute orders based on the signals.',
+      paperData: 'You can use the paper trader to simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been.',
+      marketData: 'You can use the market watcher to monitor the market to help inform your trading decisions',
+      botData: 'You can run a trade bot in realtime to automatically execute orders based on the parameters of your strategy. This performs actual trades with money from your connected accounts.',
     }
   },
   methods: {
@@ -49,7 +50,7 @@ export default {
     type: function() {
        
        if(this.selectedTypeIndex === 'paper trader'){
-         this.paperData= " You can run the strategy in realtime simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been."
+         this.paperData= " You can use the paper trader to simulate trading (trade with fake money) to see in realtime how profitable your strategy would have been."
          this.marketData = ""
          this.tradeData = ""
        } 
@@ -87,7 +88,8 @@ export default {
 }
 
 .radio_button_margins{
-  margin-left: 50%;
+ margin: 0 auto;
+ width: 10%;
 }
 
 </style>

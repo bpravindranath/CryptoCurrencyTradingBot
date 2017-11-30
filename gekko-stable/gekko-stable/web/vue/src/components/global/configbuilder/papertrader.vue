@@ -1,11 +1,12 @@
 <template lang='jade'>
 .grd
   .px1
-    h3.center2 Paper trader
+    h3.center2 Paper Trader
     em(v-if='toggle === "closed"')
-      a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
+      div.sub-header-text
+        a(href='#', v-on:click.prevent='switchToggle') Change paper trader settings
     template(v-if='toggle === "open"')
-      p Settings:
+      p Settings:     
       textarea.params(v-model='rawPaperTraderParams')
       p.bg--red.p1(v-if='rawPaperTraderParamsError') {{ rawPaperTraderParamsError.message }}
 </template>
@@ -52,7 +53,7 @@ export default {
         this.rawPaperTraderParamsError = e;
         this.paperTraderParams = {};
       }
-    }
+    }   
   }
 }
 </script>
@@ -71,7 +72,8 @@ export default {
   padding-left: 1em;
 }
 
-.center6{
-  justify-content: center;
+.sub-header-text{
+text-align: center;
+ 
 }
 </style>

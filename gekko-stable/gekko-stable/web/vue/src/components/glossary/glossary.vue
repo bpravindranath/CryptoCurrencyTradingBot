@@ -1,7 +1,6 @@
 <template lang='jade'>
-  section.contain.grd-row
-    .grd-row-col-3-6(v-html='left')
-    .px2.grd-row-col
+  .reduced-margin
+   .flex-container4(v-html='left')
 </template>
 
 <script>
@@ -9,31 +8,32 @@
 
   const left = marked(`
 
-  ## Glossary
+  ### Glossary
 
-  #### <u>Currency</u>
-  <p>
-      BTC - Bitcoin
-  <br>USDT - Tether
-  <br>ETH - Ethereum
-  <br>XMR - Monero
-  </p>
+  Here is a list of acronyms used on the Gekko TU website. For more information about trading, please visit the <a href='#/resources/resources'>Resources page.</a>
+  <p style='font-size: 20px;font-weight: bold;text-decoration:underline;'>Currencies</p>
+  <ul>
+      <li>BTC - Bitcoin</li>
+  <li>USDT - US Dollar Tether</li>
+  <li>ETH - Ethereum</li>
+  <li>XMR - Monero</li>
+  </ul>
 
-  #### <u>Asset</u>
-  <p>
-      BTC - Bitcoin
-  <br>BCH - Bitcoin Cash
-  <br>DASH - Dash
-  <br>ETC - Ethereum Classic
-  <br>ETH - Ethereum
-  <br>LTC - Litecoin
-  <br>NXT - NXT
-  <br>REP - Augur
-  <br>STR - Starcoin
-  <br>XMR - Monero
-  <br>XRP - Ripple
-  <br>ZEC - Zcash
-  </p>
+  <p style='font-size: 20px;font-weight: bold;text-decoration:underline;'>Assets</p>
+  <ul>
+     <li> BTC - Bitcoin</li>
+  <li>BCH - Bitcoin Cash</li>
+  <li>DASH - Dash</li>
+  <li>ETC - Ethereum Classic</li>
+  <li>ETH - Ethereum</li>
+  <li>LTC - Litecoin</li>
+  <li>NXT - NXT</li>
+  <li>REP - Augur</li>
+  <li>STR - Starcoin</li>
+  <li>XMR - Monero</li>
+  <li>XRP - Ripple</li>
+  <li>ZEC - Zcash</li>
+  </ul>
 
 
   `);
@@ -51,5 +51,9 @@
 <style>
   .toppad{
     margin-top: 100px;
+  }
+  
+  .reduced-margin{
+    margin-left: -30%;
   }
 </style>

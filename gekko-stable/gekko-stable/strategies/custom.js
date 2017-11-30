@@ -3,6 +3,7 @@ var config = require('../core/util.js').getConfig();
 var watchConfig = config.watch;
 var settings = config.custom;
 var async = require('async');
+var modeset = require('../core/util.js').gekkoMode();
 
 //Defining a custom strategy.
 var strat = {};
@@ -11,8 +12,8 @@ var strat = {};
 strat.init = function() {
     this.requiredHistory = 0; 
     ////Calculations and Indicators
-    var selectedActionBuy = 1; // Options: 1 = yes, 0 = no. Next action is to buy. 
-    var selectedActionSell = 0; // Options: 1 = yes, 0 = no. Next action is to sell.
+    var nextActionBuy = 'yes'; // Options: 1 = yes, 0 = no. Next action is to buy. 
+    var nextActionSell = 'no'; // Options: 1 = yes, 0 = no. Next action is to sell.    
     var counter = 0;
     var priceCounter = 0;
     var changeinPriceAmt = 0;
@@ -26,7 +27,7 @@ strat.init = function() {
     this.addIndicator('changeinPricePer', 'MACD', this.settings);
     this.addIndicator('changeinTradeVolAmt', 'MACD', this.settings);
     this.addIndicator('changeinTradeVolPer', 'MACD', this.settings);
-    var previousAction = 0; //0 for sell, 1 for buy see this page https://github.com/askmike/gekko/issues/844
+    var previousAction = 'sell'; //Options: 'sell' or 'buy'. Last completed trade type. See this page https://github.com/askmike/gekko/issues/844
     var adviceGiven = 'no'; // Whether trade advice has been given.
     var buyPricePersistence = 0; // How long the price trend for buying has continued in terms of candles.
     var sellPricePersistence = 0; // How long the price trend for selling has continued in terms of candles.
@@ -73,11 +74,11 @@ strat.init = function() {
 //Determine if a purchase should be made.
 strat.assessBuy = function assessBuy(candle){
     //Check if next action is buy or sell.
-    if(this.settings.selectedActionBuy == 0){
+    if(this.settings.nextActionBuy == 'no'){
         log.debug('Can\'t Buy, Must Sell First.');
     }    
     //Next action is to buy.
-    if(this.settings.selectedActionBuy == 1){
+    if(this.settings.nextActionBuy == 'yes'){
         if(this.settings.tradeFactors == 'price&volume'){
         //Do nothing. Decision made at end of check function.
         }
@@ -91,16 +92,18 @@ strat.assessBuy = function assessBuy(candle){
 //Determine if a sale should be made.
 strat.assessSell = function assessSell(candle){
     //Check if next action is buy or sell.    
-    if(this.settings.selectedActionSell == 0){
+    if(this.settings.nextActionSell == 'no'){
         log.debug('Can\'t Sell, Must Buy First.');
     }    
     //Next action is to sell.
-    if(this.settings.selectedActionSell == 1){
+    if(this.settings.nextActionSell == 'yes'){
+        log.debug('in nextActionSell');
         if(this.settings.tradeFactors == 'price&volume'){
         //Do nothing. Decision made at end of check function.
         }
         //Sell
         else{
+            log.debug('in else');
             this.adviseSell(this.candle);   
         }     
     }    
@@ -112,11 +115,11 @@ strat.adviseBuy = function adviseBuy(candle){
     //Ensure that advice will not be given twice in same candle.
     this.settings.adviceGiven = 'yes';
     log.debug('******TRADE     Buying at: ', this.candle.close);   
-    //Set previousAction to 1 (buy).
-    this.previousAction = 1;
+    //Set previousAction buy.
+    this.previousAction = 'buy';
     //Have to reset this because can't keep buying after you've used all your money to buy. Next action should be to sell.
-    this.settings.selectedActionSell = 1;
-    this.settings.selectedActionBuy = 0;
+    this.settings.nextActionSell = 'yes';
+    this.settings.nextActionBuy = 'no';
     //Reset buyPricePersistence.
     this.buyPricePersistence = 0;
     //Record the purchase price.
@@ -125,6 +128,7 @@ strat.adviseBuy = function adviseBuy(candle){
 
 //Sell
 strat.adviseSell = function adviseSell(candle){
+    log.debug('in adviseSell');
     //Check if priceProtection is enabled. If yes, can't sell until price is greater than purchase price.
     if(this.settings.priceProtection == 'enabled'){
         log.debug('Price Protection Enabled. Won\'t Sell Until Price is at Least: ', this.buyPrice);
@@ -133,11 +137,11 @@ strat.adviseSell = function adviseSell(candle){
             //Ensure that advice will not be given twice in same candle.
             this.settings.adviceGiven = 'yes';
             log.debug('******TRADE    Selling at: ', this.candle.close); 
-            //Set previousAction to 0 (sell).
-            this.previousAction = 0; 
+            //Set previousAction to sell.
+            this.previousAction = 'sell'; 
             //Have to reset this because can't keep selling after you've sold everything. Next action should be to buy.
-            this.settings.selectedActionBuy = 1;       
-            this.settings.selectedActionSell= 0;
+            this.settings.nextActionBuy = 'yes';       
+            this.settings.nextActionSell= 'no';
             //Reset sellPricePersistence.
             this.sellPricePersistence = 0;                                
         }
@@ -145,16 +149,18 @@ strat.adviseSell = function adviseSell(candle){
     //priceProtection not enabled, so can sell at any price, even if it is lower than purchase price.
     else if(this.settings.priceProtection == 'disabled'){
         this.advice('short');  
+        log.debug('after short advice');
         //Ensure that advice will not be given twice in same candle.
         this.settings.adviceGiven = 'yes';
         log.debug('******TRADE    Selling at: ', this.candle.close); 
-        //Set previousAction to 0 (sell).
-        this.previousAction = 0; 
+        //Set previousAction to sell.
+        this.previousAction = 'sell'; 
         //Have to reset this because can't keep selling after you've sold everything. Next action should be buy.
-        this.settings.selectedActionBuy = 1;       
-        this.settings.selectedActionSell= 0;
+        this.settings.nextActionBuy = 'yes';       
+        this.settings.nextActionSell= 'no';
         //Reset sellPricePersistence.
         this.sellPricePersistence = 0;
+        log.debug('Next action is to sell: ', this.settings.nextActionSell, ' Next action is to buy: ', this.settings.nextActionBuy, ' Advice given: ', this.settings.adviceGiven);        
     }    
 }
 
@@ -221,13 +227,26 @@ strat.update = function(candle) {
 
 // For debugging purposes and record keeping. Logs can be found in the logs folder. Select the paperTrader log with the timestamp equal to your paperTrader start time.
 strat.log = function() {
-    log.debug('--------CANDLE--------');
-    log.debug('------Price Information------');    
-    log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
-    log.debug('Change in Price: $', this.settings.changeinPriceAmt.toFixed(8), ' (',this.settings.changeinPricePer.toFixed(8),'%)');
-    log.debug('------Trade Volume Information------');    
-    log.debug('This Candle\'s Trade Volume: ', this.candle.volume.toFixed(8), ' Previous Trade Volume: ', this.settings.prevVoltoPrint.toFixed(8));    
-    log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt.toFixed(8), ' (', this.settings.changeinTradeVolPer.toFixed(8), '%)' );     
+//    if(modeset !== 'backtest'){
+        log.debug('--------CANDLE--------');
+        log.debug('Next action is to sell: ', this.settings.nextActionSell, ' Next action is to buy: ', this.settings.nextActionBuy, ' Advice given: ', this.settings.adviceGiven);
+        log.debug('------Price Information------');    
+        log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
+        log.debug('Change in Price: $', this.settings.changeinPriceAmt.toFixed(8), ' (',this.settings.changeinPricePer.toFixed(8),'%)');
+        log.debug('------Trade Volume Information------');    
+        log.debug('This Candle\'s Trade Volume: ', this.candle.volume.toFixed(8), ' Previous Trade Volume: ', this.settings.prevVoltoPrint.toFixed(8));    
+        log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt.toFixed(8), ' (', this.settings.changeinTradeVolPer.toFixed(8), '%)' );     
+//    }
+//    if(modeset == 'backtest'){
+//        log.debug('--------CANDLE--------');
+//        log.debug('------Price Information------');    
+//        log.debug('Open: ', this.candle.open, ' Close: ', this.candle.close, ' High: ', this.candle.high, ' Low: ', this.candle.low);
+//        log.debug('Change in Price: $', this.settings.changeinPriceAmt, ' (',this.settings.changeinPricePer,'%)');
+//        log.debug('------Trade Volume Information------');    
+//        log.debug('This Candle\'s Trade Volume: ', this.candle.volume, ' Previous Trade Volume: ', this.settings.prevVoltoPrint);    
+//        log.debug('Change in Trade Volume: ', this.settings.changeinTradeVolAmt, ' (', this.settings.changeinTradeVolPer, '%)' );  
+//    }
+ 
 } // end log
 
 // Based on the newly calculated information, check if we should make a purchase or sale.
@@ -448,13 +467,13 @@ strat.check = function(candle) {
     //User selected specific price thresholds as the trade factor.
     if(this.settings.tradeFactors == 'thresholds'){
         //Candle's close value is less than or equal to user's specified buy threshold, advice has not yet been given, and the next action to complete is a buy, so buy.
-        if((this.settings.adviceGiven == 'no') && (this.settings.selectedActionBuy == 1) ){
+        if((this.settings.adviceGiven == 'no') && (this.settings.nextActionBuy == 'yes') ){
             if (candle.close <= (this.settings.thresholds.buyPriceThreshold)){
                 this.adviseBuy(this.candle);     
             }
         }
         //Candle's close value is greater than or equal to user's specified sell threshold, advice has not yet been given, and the next action to complete is a sell, so sell.                
-        else if( (this.settings.adviceGiven == 'no') && (this.settings.selectedActionSell == 1)){
+        else if( (this.settings.adviceGiven == 'no') && (this.settings.nextActionSell == 'yes')){
             if (candle.close >=this.settings.thresholds.sellPriceThreshold){                          
                 this.adviseSell(this.candle);
             }
@@ -668,12 +687,12 @@ strat.check = function(candle) {
     //User selected to make trade decisions based on changes in both price and volume. Both the price persistence threshold and the volume persistence threshold must be met (indicating the appropriate price and volume trends have occurred), before a buy or sell can be completed.
     if(this.settings.tradeFactors == 'price&volume'){
         //Next action is to sell, the sellVolPersistence and sellPricePersistence thresholds have been reached.
-        if((this.settings.selectedActionSell == 1) && (this.sellVolPersistence >= this.settings.sellVolPersistenceThreshold) && (this.sellPricePersistence >= this.settings.sellPricePersistenceThreshold)){
+        if((this.settings.nextActionSell == 'yes') && (this.sellVolPersistence >= this.settings.sellVolPersistenceThreshold) && (this.sellPricePersistence >= this.settings.sellPricePersistenceThreshold)){
             //Make a sale.
             this.adviseSell(this.candle);
         }
         //Next action is to buy, the buyVolPersistence and buyPricePersistence thresholds have been reached.
-        else if((this.settings.selectedActionBuy == 1) && (this.buyVolPersistence >= this.settings.buyVolPersistenceThreshold) && (this.buyPricePersistence >= this.settings.buyPricePersistenceThreshold)){
+        else if((this.settings.nextActionBuy == 'yes') && (this.buyVolPersistence >= this.settings.buyVolPersistenceThreshold) && (this.buyPricePersistence >= this.settings.buyPricePersistenceThreshold)){
             //Make a purchase.
             this.adviseBuy(this.candle);
         }        

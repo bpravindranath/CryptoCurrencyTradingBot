@@ -1,15 +1,18 @@
 <template lang='jade'>
+.reduced-margin
   .contain.py2
     //- .text(v-html='text')
-    h2.col-4.center Start A New Live Gekko
+    h2.col-4.center Trade Bots & <br> Market Watchers
+    hr
+    h3.col-4.center Start a New Trade Bot or Market Watcher   
     div.button_center
        router-link.router-link(to='/live-gekkos/new') 
            button.button_color Start!
     hr
     div.button_center
-       h3 Market watchers
+       h3 Market Watchers
     div.sub-header-text
-       .text(v-if='!watchers.length')
+       span(v-if='!watchers.length')
           p You are currently not watching any markets.
     table.full.clickable(v-if='watchers.length')
       thead
@@ -33,9 +36,9 @@
             template(v-if='gekko.firstCandle && gekko.lastCandle') {{ timespan(gekko.lastCandle.start, gekko.firstCandle.start) }}
     hr
     div.button_center
-      h3 Strat runners
+      h3 Trade Bots
     div.sub-header-text
-      .text(v-if='!stratrunners.length')
+      span(v-if='!stratrunners.length')
         p You are currently not running any strategies.
     table.full(v-if='stratrunners.length')
       thead
@@ -72,7 +75,7 @@ import marked from '../../tools/marked'
 
 // const text = marked(`
 
-// ## Live Gekko
+// ## Trade Bots
 
 // Run your strategy against the live market!
 
@@ -126,8 +129,12 @@ export default {
 }
 
 .sub-header-text{
-  margin-left: 33%;
+text-align: center;
  
+}
+
+.sub-header-inside{
+  display: inline-block;
 }
 
 .button_center{

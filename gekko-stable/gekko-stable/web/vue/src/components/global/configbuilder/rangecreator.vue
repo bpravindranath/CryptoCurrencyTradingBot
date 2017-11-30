@@ -1,12 +1,13 @@
 <template lang='jade'>
 div
-  h3 Daterange
+  br
+  h4 Date Range
   div
     label(for='from') From
-    input(v-model='from')
+    input.Inputcolor(v-model='from')
   div
     label(for='to') To
-    input(v-model='to')
+    input.Inputcolor(v-model='to')
 </template>
 
 <script>
@@ -88,6 +89,11 @@ export default {
 
 .radio label {
   margin-top: 0;
+}
+
+.Inputcolor{
+  background-color:white;
+  color: black;
 }
 
 </style>

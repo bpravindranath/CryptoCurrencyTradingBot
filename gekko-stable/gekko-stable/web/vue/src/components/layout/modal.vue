@@ -7,6 +7,9 @@
 
 <script>
 
+import apiConfigBuilder from '../config/apiConfigBuilder.vue';
+import { post } from '../../tools/ajax';
+
 import marked from '../../tools/marked';
 
 const messages = {

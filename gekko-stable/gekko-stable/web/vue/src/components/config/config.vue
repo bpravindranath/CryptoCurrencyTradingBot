@@ -1,7 +1,8 @@
 <template lang='jade'>
+
 div.contain
   h2 Config
-  .hr
+  hr
   h3 Available API keys
   p(v-if='!apiKeySets.length')
     em You don't have any API keys yet.
@@ -11,9 +12,9 @@ div.contain
       | )
   a(href='#', v-if='!addApiToggle', v-on:click.prevent='openAddApi') add an API key
   template(v-if='addApiToggle')
-    .hr
+    hr
     apiConfigBuilder
-  .hr
+  hr
   
 </template>
 
