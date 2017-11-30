@@ -2,7 +2,7 @@
 .grd.contain
   .grd-row
     .grd-row-col-6.mx1
-         h3 Market
+         h4 Market
          market-picker.contain(v-on:market='updateMarketConfig', only-importable='true')
 
   .grid-row
