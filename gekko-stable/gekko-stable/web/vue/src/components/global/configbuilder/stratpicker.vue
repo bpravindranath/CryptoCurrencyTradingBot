@@ -1331,24 +1331,25 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
+
           .grd-row
             .grd-row-col-2-6.mx1.center_box
-              h6.font_weight Buy Volume Persistence Threshold
+              h6.font_weight Buy Price Persistence Threshold
                 .tooltip
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
-                input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
+                input.Inputcolor(v-model='rawStratParams.buyPricePersistenceThreshold') 
 
             .grd-row-col-2-6.mx1.center_box  
-              h6.font_weight Sell Volume Persistence Threshold
+              h6.font_weight Sell Price Persistence Threshold
                 .tooltip
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
-                input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
+                input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
 
         
 
