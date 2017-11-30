@@ -1071,7 +1071,7 @@
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
                         span Bacon ipsum dolor amet corned beef prosciutto capicola
-                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDncreaseAmt') 
+                    input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
         //--------------------------------------- CHANGE TYPE PARAMETER  === # Should this be %? ---------------------------------- 
         span(v-if="rawStratParams.changeType === '%'")
@@ -1311,6 +1311,44 @@
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
                 input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
+        
+        span(v-if="rawStratParams.tradeFactors === 'price&volume'")
+          hr(width='70%')
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
+          .grd-row
+            .grd-row-col-2-6.mx1.center_box
+              h6.font_weight Buy Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
+
+            .grd-row-col-2-6.mx1.center_box  
+              h6.font_weight Sell Volume Persistence Threshold
+                .tooltip
+                  img(src='/assets/question_yellow.jpeg', width='10', height='10')
+                  h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
+                    hr(width='70%')
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
 
         
 
@@ -1325,9 +1363,8 @@
                   h3.tooltiptext.tooltip_font PRICE PROTECTION 
                     hr(width='70%')
                     span Bacon ipsum dolor amet corned beef prosciutto capicola
-                  //- input.Inputcolor(v-model='rawStratParams.Protection')
                 .custom-select.button
-                  select(v-model='rawStratParams.Protection')
+                  select(v-model='rawStratParams.priceProtection')
                     option(disabled='', value='') Please select one
                     option disabled
                     option enabled 
@@ -1359,7 +1396,7 @@
 
 import _ from 'lodash'
 import { get } from '../../../tools/ajax'
- var json2toml = require('json2toml'); //
+ 
 
 
 export default {
