@@ -117,7 +117,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Number of candles the thresholds need to be met for the trend to be valid.
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
  
@@ -127,11 +127,11 @@
         .grd-row
           .grd-row-col-2-6.mx1.center_box
             h6.font_weight First-Weight
-              .tooltip
+              .tooltip 
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font FIRST-WEIGHT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from shortest time period 
               input.Inputcolor(v-model='rawStratParams.first.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -140,7 +140,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font FIRST-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Shortest time period
               input.Inputcolor(v-model='rawStratParams.first.period')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -149,7 +149,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SECOND-WEIGHT  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from middle time period
               input.Inputcolor(v-model='rawStratParams.second.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -158,7 +158,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SECOND-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Middle time period
               input.Inputcolor(v-model='rawStratParams.second.period')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -167,7 +167,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font THIRD-WEIGHT  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from longest time period
               input.Inputcolor(v-model='rawStratParams.third.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -176,7 +176,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font THIRD-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Longest time period 
               input.Inputcolor(v-model='rawStratParams.third.period')
 
        
@@ -190,7 +190,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of UO that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -199,7 +199,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font High
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of UO that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -208,7 +208,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h6.font_weight.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
 
@@ -282,7 +282,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font MOMENTUM 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span One of the momentum indicators - TSI, RSI, or UO
               input.Inputcolor(v-model='rawStratParams.momentum')
        
         h4.center Thresholds
@@ -295,7 +295,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font WEIGHT LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span New low threshold that is default threshold for the selected momentum indicator + PPOhist * PPOweight
               input.Inputcolor(v-model='rawStratParams.thresholds.weightLow')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -304,7 +304,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font WEIGHT HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span New high threshold that is default threshold for the selected momentum indicator + PPOhist * PPOweight
               input.Inputcolor(v-model='rawStratParams.thresholds.weightHigh')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -313,7 +313,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
       
 
@@ -364,7 +364,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Number of candles the thresholds need to be met for the trend to be valid.
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
       
 
@@ -410,7 +410,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Number of candles the thresholds need to be met for the trend to be valid.
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -426,7 +426,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -435,7 +435,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.long')
         
        
@@ -449,7 +449,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of TSI that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -458,7 +458,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of TSI that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -467,7 +467,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -536,7 +536,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Number of candles the thresholds need to be met for the trend to be valid.
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -636,7 +636,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Number of candles the thresholds need to be met for the trend to be valid.
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
 
