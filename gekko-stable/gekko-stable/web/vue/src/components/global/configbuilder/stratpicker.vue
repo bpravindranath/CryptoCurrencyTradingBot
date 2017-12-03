@@ -596,7 +596,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font CONSTANT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier that ensures most of the CCI values fall within the up and down range. 
               input.Inputcolor(v-model='rawStratParams.constant')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -605,7 +605,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HISTORY 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days used to calculate SMA of Average Price
               input.Inputcolor(v-model='rawStratParams.history')
        
         h4.center Thresholds
@@ -618,7 +618,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Upper CCI value that signals the start of uptrend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -627,7 +627,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font Down
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower CCI value that signals the start of downtrend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -636,7 +636,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the thresholds need to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
 
