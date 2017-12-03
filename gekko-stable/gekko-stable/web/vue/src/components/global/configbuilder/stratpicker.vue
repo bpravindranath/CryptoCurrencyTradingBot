@@ -67,7 +67,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -76,7 +76,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.long')
 
         .grd-row
@@ -86,7 +86,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SIGNAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span EMA weight calculated over the difference from short/long.
               input.Inputcolor(v-model='rawStratParams.signal')
        
         h4.center Thresholds
@@ -99,7 +99,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in short/long lines need to be for it to be considered a downside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -108,7 +108,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in short/long lines need to be for it to be considered a upside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -117,7 +117,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the thresholds need to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
  
