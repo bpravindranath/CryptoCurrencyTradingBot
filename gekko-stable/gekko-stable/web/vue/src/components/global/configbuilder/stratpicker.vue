@@ -225,7 +225,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN FAST PERIOD 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.parameters.optInFastPeriod')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -234,7 +234,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN SLOW PERIOD 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.parameters.optInSlowPeriod')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -243,7 +243,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN SIGNAL PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for EMA to be calculated over the difference from slow/fast periods
               input.Inputcolor(v-model='rawStratParams.parameters.optInSignalPeriod')
        
         h4.center Thresholds
@@ -256,7 +256,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in fast/slow period need to be for it to be considered a downside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -265,7 +265,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in fast/slow period need to be for it to be considered an upside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         
 
@@ -355,7 +355,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Higher threshold of RSI that triggers a upward trend. 
+                  span Higher threshold of RSI that triggers an upward trend. 
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -379,7 +379,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font INTERVAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days used for comparing up periods to down periods
               input.Inputcolor(v-model='rawStratParams.interval')
        
         h4.center Thresholds
@@ -392,7 +392,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of RSI that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -401,7 +401,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of RSI that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -410,7 +410,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the thresholds need to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
