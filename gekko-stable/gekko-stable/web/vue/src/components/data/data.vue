@@ -4,7 +4,7 @@
     .hr
     h2 Available datasets
     .txt--center.my2(v-if='datasetScanstate === "idle"')
-      a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
+      a.w100--s.btn--yellow.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
     .txt--center.my2(v-if='datasetScanstate === "scanning"')
       spinner
     .my2(v-if='datasetScanstate === "scanned"')
@@ -37,7 +37,7 @@
     .my2
       h2 Import more data
       p.text You can easily import more market data directly from exchanges using the importer.
-      router-link(to='/data/importer') Go to the importer!
+      router-link.btn--yellow(to='/data/importer') Go to the importer!
 </template>
 
 <script>

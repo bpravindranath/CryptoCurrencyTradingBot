@@ -4,7 +4,7 @@
     .contain(v-if='!data')
       h1 Unknown Trade Bot
       p Gekko doesn't know what trade bot this is...
-    div(v-if='data')
+    div.st2(v-if='data')
       h2.contain Trade Bot
       .grd.contain
         .grd-row
@@ -219,5 +219,8 @@ export default {
 
 .reduced-margin{
     margin-left: -30%;
+}
+.st2 {
+    width: 700px;
 }
 </style>

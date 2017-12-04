@@ -12,9 +12,9 @@
              router-link(to='/backtest').py1 Backtests
              a(href='#/resources/resources' style='padding-top: 12px;') Resources
                .sidebar-item
-                 p Bitcoin News on Twitter
+                 p Cryptocurrency News on Twitter
                 
-              a.twitter-timeline(href='https://twitter.com/hashtag/bitcoin', data-widget-id='924709618386919427', height='500') #bitcoin Tweets
+              a.twitter-timeline(href='https://twitter.com/hashtag/bitcoin', data-widget-id='924709618386919427', height='500') #Crytocurrencynews Tweets
       .flex-container4
         .fill
             router-view.view
@@ -40,6 +40,7 @@
 }
 .header{
     background-color: #000000;
+    background-image: url("/assets/TopBanner.png");
     width: 100%;
 }
 .flex-container2{
@@ -95,6 +96,7 @@
 
 .menu .router-link-active {
   font-weight: bold;
+  background-color: #e2e504;
 }
 
 .menu a:active {
@@ -104,7 +106,7 @@
 .menu a:hover {
   font-style: italic;
   font-weight: bold;
-  background-color: #e2e504;
+  background-color: #fdfec3;
 }
 
 body{

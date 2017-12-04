@@ -6,7 +6,7 @@
     config-builder(v-on:config='check')
     div(v-if='backtestable')
       .txt--center
-        a.w100--s.my1.btn--blue(href='#', v-if='backtestState !== "fetching"', v-on:click.prevent='run') Backtest
+        a.w100--s.my1.btn--yellow(href='#', v-if='backtestState !== "fetching"', v-on:click.prevent='run') Backtest
         div(v-if='backtestState === "fetching"').scan-btn
           p Running backtest..
           spinner

@@ -23,6 +23,6 @@ echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
 
-::CD %~dp0gekko-stable\gekko-stable
-::npm install --only=production
+CD %~dp0gekko-stable\gekko-stable
+npm install --only=production
 pause
