@@ -4,7 +4,7 @@
     .flex-container4(v-if='!data')
       h1 Unknown Watcher
       p Gekko doesn't know what whatcher this is...
-   .reduced-margin
+   .st2
     .flex-container4(v-if='data')
       h2 Market Watcher
       .grd

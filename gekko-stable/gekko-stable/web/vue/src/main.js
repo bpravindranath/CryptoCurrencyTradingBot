@@ -33,7 +33,7 @@ const router = new VueRouter({
     { path: '/config', component: config },
     { path: '/data', component: data },
     { path: '/data/importer', component: importer },
-    // { path: '/data/importer/import/:id', component: singleImport },
+    { path: '/data/importer/import/:id', component: singleImport },
     { path: '/live-gekkos', component: gekkoList },
     { path: '/live-gekkos/new', component: newGekko },
     { path: '/live-gekkos/stratrunner/:id', component: singleStratrunner },

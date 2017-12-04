@@ -7,7 +7,7 @@
     hr
     .txt--center(v-if='config.valid')
       a(href='#', v-on:click.prevent='start') 
-          button.button_color Start!
+          button.btn--yellow Start!
 </template>
 
 <script>

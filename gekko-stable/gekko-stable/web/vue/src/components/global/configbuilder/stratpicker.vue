@@ -67,7 +67,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -76,7 +76,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.long')
 
         .grd-row
@@ -86,7 +86,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SIGNAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span EMA weight calculated over the difference from short/long.
               input.Inputcolor(v-model='rawStratParams.signal')
        
         h4.center Thresholds
@@ -99,7 +99,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in short/long lines need to be for it to be considered a downside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -108,7 +108,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in short/long lines need to be for it to be considered a upside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -117,7 +117,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
  
@@ -127,11 +127,11 @@
         .grd-row
           .grd-row-col-2-6.mx1.center_box
             h6.font_weight First-Weight
-              .tooltip
+              .tooltip 
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font FIRST-WEIGHT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from shortest time period 
               input.Inputcolor(v-model='rawStratParams.first.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -140,7 +140,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font FIRST-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Shortest time period
               input.Inputcolor(v-model='rawStratParams.first.period')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -149,7 +149,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SECOND-WEIGHT  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from middle time period
               input.Inputcolor(v-model='rawStratParams.second.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -158,7 +158,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SECOND-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Middle time period
               input.Inputcolor(v-model='rawStratParams.second.period')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -167,7 +167,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font THIRD-WEIGHT  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier for the average obtained from longest time period
               input.Inputcolor(v-model='rawStratParams.third.weight')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -176,7 +176,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font THIRD-PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Longest time period 
               input.Inputcolor(v-model='rawStratParams.third.period')
 
        
@@ -190,7 +190,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of UO that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -199,7 +199,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font High
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of UO that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -208,7 +208,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h6.font_weight.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
 
@@ -225,7 +225,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN FAST PERIOD 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.parameters.optInFastPeriod')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -234,7 +234,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN SLOW PERIOD 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.parameters.optInSlowPeriod')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -243,7 +243,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font OPT IN SIGNAL PERIOD  
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days for EMA to be calculated over the difference from slow/fast periods
               input.Inputcolor(v-model='rawStratParams.parameters.optInSignalPeriod')
        
         h4.center Thresholds
@@ -256,7 +256,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in fast/slow period need to be for it to be considered a downside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -265,7 +265,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in fast/slow period need to be for it to be considered an upside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         
 
@@ -282,7 +282,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font MOMENTUM 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span One of the momentum indicators - TSI, RSI, or UO
               input.Inputcolor(v-model='rawStratParams.momentum')
        
         h4.center Thresholds
@@ -295,7 +295,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font WEIGHT LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span New low threshold that is default threshold for the selected momentum indicator + PPOhist * PPOweight
               input.Inputcolor(v-model='rawStratParams.thresholds.weightLow')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -304,7 +304,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font WEIGHT HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span New high threshold that is default threshold for the selected momentum indicator + PPOhist * PPOweight
               input.Inputcolor(v-model='rawStratParams.thresholds.weightHigh')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -313,7 +313,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
       
 
@@ -333,7 +333,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font INTERVAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days used for comparing up periods to down periods
               input.Inputcolor(v-model='rawStratParams.interval')
        
         h4.center Thresholds
@@ -346,7 +346,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of RSI that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -355,7 +355,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of RSI that triggers an upward trend. 
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -364,7 +364,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
       
 
@@ -379,7 +379,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font INTERVAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days used for comparing up periods to down periods
               input.Inputcolor(v-model='rawStratParams.interval')
        
         h4.center Thresholds
@@ -392,7 +392,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of RSI that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -401,7 +401,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of RSI that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -410,7 +410,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -426,7 +426,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -435,7 +435,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.long')
         
        
@@ -449,7 +449,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LOW 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower threshold of TSI that triggers a downward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.low')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -458,7 +458,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HIGH
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Higher threshold of TSI that triggers an upward trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.high')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -467,7 +467,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -487,7 +487,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -496,7 +496,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise
               input.Inputcolor(v-model='rawStratParams.long')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -505,7 +505,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SIGNAL 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span EMA weight calculated over the difference from short/long.
               input.Inputcolor(v-model='rawStratParams.signal')
        
         h4.center Thresholds
@@ -518,7 +518,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in short/long lines need to be for it to be considered a downside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -527,7 +527,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in short/long lines need to be for it to be considered a upside trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -536,7 +536,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
       
@@ -551,7 +551,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font SHORT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Short EMA that moves closer to the real market (including noise)
               input.Inputcolor(v-model='rawStratParams.short')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -560,7 +560,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font LONG 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Long EMA that lags behind the market more but is also more resistant to noise.
               input.Inputcolor(v-model='rawStratParams.long')
        
         h4.center Thresholds
@@ -573,7 +573,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font DOWN
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the negative difference in short/long lines need to be for it to be considered a trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -582,7 +582,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Specifies how big the positive difference in short/long lines need to be for it to be considered a trend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         
 
@@ -596,7 +596,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font CONSTANT 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Multiplier that ensures most of the CCI values fall within the up and down range. 
               input.Inputcolor(v-model='rawStratParams.constant')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -605,7 +605,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font HISTORY 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of days used to calculate SMA of Average Price
               input.Inputcolor(v-model='rawStratParams.history')
        
         h4.center Thresholds
@@ -618,7 +618,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font UP 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Upper CCI value that signals the start of uptrend.
               input.Inputcolor(v-model='rawStratParams.thresholds.down')
 
           .grd-row-col-2-6.mx1.center_box  
@@ -627,7 +627,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font Down
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Lower CCI value that signals the start of downtrend.
               input.Inputcolor(v-model='rawStratParams.thresholds.up')
         .grd-row
           .grd-row-col-2-6.mx1.center_box
@@ -636,7 +636,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font PERSISTENCE 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Number of candles the threshold needs to be met for the trend to be valid.
               input.Inputcolor(v-model='rawStratParams.thresholds.persistence')
 
 
@@ -667,7 +667,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font TRADE BASED ON 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Factor the trades will be based on, also referred to as 'tradefactor'
               .custom-select.button
                 select(v-model='rawStratParams.tradeFactors')
                   option(disabled='', value='') Please select one
@@ -684,7 +684,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font PRICE TYPE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Aspect of candle the bot will use to read price  
                 .custom-select.button
                   select(v-model='rawStratParams.priceType')
                     option(disabled='', value='') Please select one
@@ -700,7 +700,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font PRICE TYPE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Aspect of candle the bot will use to read price 
                 .custom-select.button
                   select(v-model='rawStratParams.priceType')
                     option(disabled='', value='') Please select one
@@ -717,7 +717,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether buy should be executed when price decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.buyIfPrice')
                     option(disabled='', value='') Please select one
@@ -730,7 +730,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether sell should be executed when price decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
@@ -744,7 +744,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether buy should be executed when trade volume decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.buyIfVol')
                     option(disabled='', value='') Please select one
@@ -757,7 +757,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether sell should be executed when trade volume decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfVol')
                     option(disabled='', value='') Please select one
@@ -772,7 +772,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether buy should be executed when price decreases or increases 
                 .custom-select.button
                   select(v-model='rawStratParams.buyIfPrice')
                     option(disabled='', value='') Please select one
@@ -785,7 +785,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether sell should be executed when price decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
@@ -800,7 +800,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether buy should be executed when trade volume decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.buyIfVol')
                     option(disabled='', value='') Please select one
@@ -814,7 +814,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether sell should be executed when trade volume decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfVol')
                     option(disabled='', value='') Please select one
@@ -829,7 +829,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Buy the cryptocurrency at this price or less
                 input.Inputcolor(v-model='rawStratParams.thresholds.buyPriceThreshold')
               h5.font_weight Buy When Price is {{rawStratParams.thresholds.buyPriceThreshold}} or Less
 
@@ -839,7 +839,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Sell the cryptocurrency at this price or more
                 input.Inputcolor(v-model='rawStratParams.thresholds.sellPriceThreshold')
               h5.font_weight Sell When Price is {{rawStratParams.thresholds.sellPriceThreshold}} or Higher
             
@@ -858,7 +858,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font CHANGE TYPE 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether trades should be based on change in raw tradefactor or change in percentage of the tradefactor. 
                 .custom-select.button
                   select(v-model='rawStratParams.changeType')
                     option(disabled='', value='') Please select one
@@ -896,7 +896,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a buy  
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                     
@@ -907,7 +907,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt')
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -920,7 +920,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
                 //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
@@ -930,7 +930,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
@@ -944,7 +944,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                 //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
@@ -954,7 +954,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                
                 
@@ -965,7 +965,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
                 //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
@@ -975,7 +975,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
@@ -994,7 +994,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
                 //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
@@ -1004,7 +1004,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -1017,7 +1017,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to decrease for the bot to execute a sell 
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
                 //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
@@ -1027,7 +1027,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
               
@@ -1041,7 +1041,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
                 //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
@@ -1051,7 +1051,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                 //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfVol ==='decrease'")
@@ -1060,7 +1060,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to decrease for the bot to execute a sell 
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
                 //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
@@ -1070,7 +1070,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the volume needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
         //--------------------------------------- CHANGE TYPE PARAMETER  === # Should this be %? ---------------------------------- 
@@ -1090,7 +1090,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to decrease for the bot to execute a buy 
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                 //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
@@ -1100,7 +1100,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt')
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -1113,7 +1113,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
                 //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
@@ -1123,7 +1123,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
               
 
@@ -1137,7 +1137,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                 //--------------------------------------- rawStratParams.buyIfPrice === increase ---------------------------------- 
@@ -1147,7 +1147,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                
                 
@@ -1158,7 +1158,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to decrease for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt')
 
                 //--------------------------------------- rawStratParams.buyIfVol === increase ---------------------------------- 
@@ -1168,7 +1168,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt')
             
             
@@ -1185,7 +1185,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
                 //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
@@ -1195,7 +1195,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -1208,7 +1208,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to decrease for the bot to execute a sell 
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
                 //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
@@ -1218,7 +1218,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to increase for the bot to execute a sell 
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
               
               
@@ -1232,7 +1232,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt', placeholder="edit me") 
                
                 //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
@@ -1242,7 +1242,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the price needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
                 //--------------------------------------- rawStratParams.sellIfVol === decrease ---------------------------------- 
                 span(v-if="rawStratParams.sellIfVol ==='decrease'")
@@ -1251,7 +1251,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolDecreaseAmt') 
                     
                 //--------------------------------------- rawStratParams.sellIfVol === increase ---------------------------------- 
@@ -1261,7 +1261,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL VOLUME
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Percentage the volume needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.tradeVolIncreaseAmt') 
 
 
@@ -1278,7 +1278,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY PRICE PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before buying 
                 input.Inputcolor(v-model='rawStratParams.buyPricePersistenceThreshold') 
 
             .grd-row-col-2-6.mx1.center_box  
@@ -1287,7 +1287,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before selling
                 input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
         
 
@@ -1300,7 +1300,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected volume conditions before buying
                 input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
 
             .grd-row-col-2-6.mx1.center_box  
@@ -1309,7 +1309,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected volume conditions before selling
                 input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
         
         span(v-if="rawStratParams.tradeFactors === 'price&volume'")
@@ -1321,7 +1321,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected volume conditions before buying
                 input.Inputcolor(v-model='rawStratParams.buyVolPersistenceThreshold') 
             .grd-row-col-2-6.mx1.center_box  
               h6.font_weight Sell Volume Persistence Threshold
@@ -1329,7 +1329,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected volume conditions before selling
                 input.Inputcolor(v-model='rawStratParams.sellVolPersistenceThreshold') 
 
           .grd-row
@@ -1339,7 +1339,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before buying
                 input.Inputcolor(v-model='rawStratParams.buyPricePersistenceThreshold') 
 
             .grd-row-col-2-6.mx1.center_box  
@@ -1348,7 +1348,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL VOLUME PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before selling
                 input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
 
         
@@ -1363,7 +1363,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font PRICE PROTECTION 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether price protection should be enabled or disabled
                 .custom-select.button
                   select(v-model='rawStratParams.priceProtection')
                     option(disabled='', value='') Please select one
@@ -1377,7 +1377,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font BUY IMMEDIATELY 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select 'yes' if you want to buy right away and wait for the strategy to execute rest of the buys/sells. Select 'no' if you want to wait for the strategy to execute all buys/sells.   
               .custom-select.button
                 select(v-model='rawStratParams.buyImmediately')
                   option(disabled='', value='') Please select one
