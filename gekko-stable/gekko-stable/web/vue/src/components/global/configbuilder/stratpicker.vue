@@ -667,7 +667,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font TRADE BASED ON 
                   hr(width='70%')
-                  span Bacon ipsum dolor amet corned beef prosciutto capicola
+                  span Factor the trades will be based on
               .custom-select.button
                 select(v-model='rawStratParams.tradeFactors')
                   option(disabled='', value='') Please select one
@@ -684,7 +684,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font PRICE TYPE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Aspect of candle the bot will use to read price  
                 .custom-select.button
                   select(v-model='rawStratParams.priceType')
                     option(disabled='', value='') Please select one
@@ -730,7 +730,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Bacon ipsum dolor amet corned beef prosciutto capicola 
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
@@ -772,7 +772,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether buy should be executed when price decreases or increases 
                 .custom-select.button
                   select(v-model='rawStratParams.buyIfPrice')
                     option(disabled='', value='') Please select one
@@ -785,7 +785,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether sell should be executed when price decreases or increases
                 .custom-select.button
                   select(v-model='rawStratParams.sellIfPrice')
                     option(disabled='', value='') Please select one
@@ -858,7 +858,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font CHANGE TYPE 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether trades should be based on change in raw price, or change in price percentage
                 .custom-select.button
                   select(v-model='rawStratParams.changeType')
                     option(disabled='', value='') Please select one
@@ -896,7 +896,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a buy  
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt')
                     
                     
@@ -907,7 +907,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font BUY PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a buy
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt')
               
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -994,7 +994,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to decrease for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceDecreaseAmt') 
                
                 //--------------------------------------- rawStratParams.sellIfPrice === increase ---------------------------------- 
@@ -1004,7 +1004,7 @@
                       img(src='/assets/question_yellow.jpeg', width='10', height='10')
                       h3.tooltiptext.tooltip_font SELL PRICE
                         hr(width='70%')
-                        span Bacon ipsum dolor amet corned beef prosciutto capicola
+                        span Amount the price needs to increase for the bot to execute a sell
                     input.Inputcolor(v-model='rawStratParams.thresholds.priceIncreaseAmt') 
 
               //--------------------------------------- CHANGE TYPE === '#'' && TRADE FACTORS === 'Volume' ---------------------------------- 
@@ -1278,7 +1278,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font BUY PRICE PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before buying 
                 input.Inputcolor(v-model='rawStratParams.buyPricePersistenceThreshold') 
 
             .grd-row-col-2-6.mx1.center_box  
@@ -1287,7 +1287,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font SELL PRICE PERSISTENCE THRESHOLD
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Number of consecutive candles that need to meet the selected price conditions before selling
                 input.Inputcolor(v-model='rawStratParams.sellPricePersistenceThreshold') 
         
 
@@ -1363,7 +1363,7 @@
                   img(src='/assets/question_yellow.jpeg', width='10', height='10')
                   h3.tooltiptext.tooltip_font PRICE PROTECTION 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select whether price protection should be enabled or disabled
                 .custom-select.button
                   select(v-model='rawStratParams.priceProtection')
                     option(disabled='', value='') Please select one
@@ -1377,7 +1377,7 @@
                 img(src='/assets/question_yellow.jpeg', width='10', height='10')
                 h3.tooltiptext.tooltip_font BUY IMMEDIATELY 
                     hr(width='70%')
-                    span Bacon ipsum dolor amet corned beef prosciutto capicola
+                    span Select 'yes' if you want to buy on the first candle that satisfies the buy conditions. Select 'no' if you want the number of candles entered at "Buy Price Persistence Threshold" to satisfy the buy conditions before buying.   
               .custom-select.button
                 select(v-model='rawStratParams.buyImmediately')
                   option(disabled='', value='') Please select one
