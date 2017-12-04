@@ -2,7 +2,7 @@
 div
   h3.center Select a Dataset
   .txt--center.my2(v-if='datasetScanstate === "idle"')
-    a.w100--s.btn--blue.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
+    a.w100--s.btn--yellow.scan-btn(href='#', v-on:click.prevent='scan') Scan Available Data
   .txt--center.my2(v-if='datasetScanstate === "scanning"')
     spinner
   .my2.center(v-if='datasetScanstate === "scanned"')
@@ -35,18 +35,12 @@ div
             td
               label(v-bind:for='set.id') {{ humanizeDuration(set.to.diff(set.from)) }}
       
-      em
-        a(href='#', v-on:click.prevent='openRange', v-if='!rangeVisible') Adjust range
-      template(v-if='rangeVisible')
-        div
-          label(for='customFrom') From:
-          input(v-model='customFrom')
-        div
-          label(for='customTo') To:
-          input(v-model='customTo')
-
+      br
+      div
+        router-link.btn--yellow(to='/data/importer') Add More Data
+          
     em(v-else) No Data Found. 
-      a(href='#/data/importer') Let's Add Some.
+      router-link(to='/data/importer') Let's Add Some.
 
 </template>
 

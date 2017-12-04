@@ -28,7 +28,7 @@ export default {
 }
 
 .progressbar > div {
-   background-color: orange;
+   background-color: black;
    height: 20px;
    border-radius: 10px;
 }

@@ -19,7 +19,7 @@
     br
     hr(width='70%')
     .txt--center
-      a.w100--s.my1.btn--blue(href='#', v-on:click.prevent='run') Import
+      a.w100--s.my1.btn--yellow(href='#', v-on:click.prevent='run') Import
 </template>
 
 <script>

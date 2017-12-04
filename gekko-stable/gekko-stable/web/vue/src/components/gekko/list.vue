@@ -7,7 +7,7 @@
     h3.col-4.center Start a New Trade Bot or Market Watcher   
     div.button_center
        router-link.router-link(to='/live-gekkos/new') 
-           button.button_color Start!
+           button.btn--yellow Start!
     hr
     div.button_center
        h3 Market Watchers
@@ -177,6 +177,6 @@ tr.clickable {
   cursor: pointer;
 }
 tr.clickable:hover {
-  background: rgba(216,216,216,.99);
+  background: rgba(0,0,0,.99);
 }
 </style>
